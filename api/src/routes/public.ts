@@ -4,6 +4,15 @@ import { parseRow } from '../types.js'
 
 export const publicRouter = new Hono<{ Bindings: AppBindings }>()
 
+publicRouter.get('/settings', async (c) => {
+  const { results } = await c.env.DB
+    .prepare('SELECT key, value FROM settings')
+    .all<{ key: string; value: string }>()
+  const obj: Record<string, string> = {}
+  for (const row of results) obj[row.key] = row.value
+  return c.json(obj)
+})
+
 publicRouter.get('/case-studies', async (c) => {
   const { results } = await c.env.DB
     .prepare("SELECT * FROM case_studies WHERE status = 'published' ORDER BY created_at DESC")
