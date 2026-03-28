@@ -5,8 +5,11 @@ import { requireAuth } from '../middleware/auth.js'
 
 export const caseStudiesRouter = new Hono<{ Bindings: AppBindings }>()
 
-// All routes require JWT auth
-caseStudiesRouter.use('*', requireAuth)
+// All routes require JWT auth (skip OPTIONS preflight)
+caseStudiesRouter.use('*', async (c, next) => {
+  if (c.req.method === 'OPTIONS') return next()
+  return requireAuth(c, next)
+})
 
 // GET /api/case-studies
 caseStudiesRouter.get('/', async (c) => {
