@@ -33,7 +33,7 @@ async function save() {
     .map(i => ({ key: i.key, value: edited.value[i.key] }))
   if (updates.length === 0) return
   await store.saveAll(updates)
-  successMsg.value = `${updates.length} testo/i salvato/i.`
+  successMsg.value = `${updates.length} text${updates.length === 1 ? '' : 's'} saved.`
   setTimeout(() => { successMsg.value = '' }, 3000)
 }
 
@@ -55,9 +55,9 @@ function sectionLabel(key: string) {
           <div class="w-2 h-2 rounded-full bg-primary" />
           <span class="text-[0.6875rem] font-bold tracking-[0.1em] text-secondary uppercase">Content</span>
         </div>
-        <h2 class="text-[3.5rem] font-bold tracking-tighter leading-tight text-on-surface">Testi</h2>
+        <h2 class="text-[3.5rem] font-bold tracking-tighter leading-tight text-on-surface">Texts</h2>
         <p class="text-on-surface-variant max-w-md mt-4 leading-relaxed text-sm">
-          Modifica i testi del frontend. Le modifiche sono attive immediatamente.
+          Edit the frontend content. Changes take effect immediately.
         </p>
       </div>
       <div class="flex gap-3">
@@ -74,7 +74,7 @@ function sectionLabel(key: string) {
           @click="save"
         >
           <span class="material-symbols-outlined text-sm">save</span>
-          {{ store.saving ? 'Saving...' : 'Salva modifiche' }}
+          {{ store.saving ? 'Saving...' : 'Save changes' }}
         </button>
       </div>
     </div>
