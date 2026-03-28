@@ -12,10 +12,9 @@ interface CaseStudy {
 
 const config = useRuntimeConfig()
 
-// server: false — client-side only so static generation works without the API running at build time
 const { data, status } = await useFetch<CaseStudy[]>(
-  () => `${config.public.apiBase}/api/public/case-studies`,
-  { server: false, lazy: true }
+  `${config.public.apiBase}/api/public/case-studies`,
+  { server: true, default: () => [] }
 )
 
 const projects = computed(() => data.value ?? [])

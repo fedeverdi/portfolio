@@ -12,7 +12,6 @@ export default defineNuxtConfig({
   },
   nitro: {
     preset: process.env.NODE_ENV === 'development' ? undefined : 'cloudflare_pages',
-    unenv: { ignore: ['node:process'] },
     routeRules: process.env.NODE_ENV === 'development'
       ? { '/api/**': { proxy: 'http://localhost:4000/api/**' } }
       : {}
