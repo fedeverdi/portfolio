@@ -22,6 +22,7 @@ publicRouter.post('/contact', async (c) => {
   const name = (body.name ?? '').trim()
   const email = (body.email ?? '').trim()
   const message = (body.message ?? '').trim()
+  const turnstileToken = (body.turnstileToken ?? '').trim()
 
   if (!name || !email || !message) {
     return c.json({ error: 'All fields are required' }, 400)
@@ -30,6 +31,25 @@ publicRouter.post('/contact', async (c) => {
   // Basic email format check
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
     return c.json({ error: 'Invalid email address' }, 400)
+  }
+
+  // Verify Turnstile token
+  if (c.env.TURNSTILE_SECRET) {
+    if (!turnstileToken) {
+      return c.json({ error: 'Security check required' }, 400)
+    }
+    const verification = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams({
+        secret: c.env.TURNSTILE_SECRET,
+        response: turnstileToken
+      })
+    })
+    const result = await verification.json() as { success: boolean }
+    if (!result.success) {
+      return c.json({ error: 'Security check failed. Please try again.' }, 400)
+    }
   }
 
   const id = crypto.randomUUID()

@@ -2,6 +2,7 @@
 const { t } = await useTexts()
 const config = useRuntimeConfig()
 const apiBase = (config.public.apiBase as string) || 'https://api-portfolio.federicoverdi.it'
+const turnstileSiteKey = config.public.turnstileSiteKey as string
 
 const form = reactive({
   name: '',
@@ -12,21 +13,45 @@ const form = reactive({
 const submitted = ref(false)
 const loading = ref(false)
 const error = ref('')
+const turnstileToken = ref('')
+
+declare global {
+  interface Window { turnstile?: { reset: (el: HTMLElement) => void } }
+}
+const turnstileEl = ref<HTMLElement | null>(null)
+
+function onTurnstileCallback(token: string) {
+  turnstileToken.value = token
+}
+
+if (import.meta.client) {
+  ;(window as unknown as Record<string, unknown>).__turnstileCallback = onTurnstileCallback
+}
 
 async function handleSubmit() {
+  if (!turnstileToken.value) {
+    error.value = 'Please complete the security check.'
+    return
+  }
   loading.value = true
   error.value = ''
   try {
     await $fetch(`${apiBase}/api/public/contact`, {
       method: 'POST',
-      body: { name: form.name, email: form.email, message: form.message }
+      body: { name: form.name, email: form.email, message: form.message, turnstileToken: turnstileToken.value }
     })
     submitted.value = true
     form.name = ''
     form.email = ''
     form.message = ''
+    turnstileToken.value = ''
   } catch {
     error.value = 'Something went wrong. Please try again.'
+    // Reset widget so user can try again
+    if (import.meta.client && window.turnstile && turnstileEl.value) {
+      window.turnstile.reset(turnstileEl.value)
+    }
+    turnstileToken.value = ''
   } finally {
     loading.value = false
   }
@@ -143,6 +168,15 @@ async function handleSubmit() {
             >
               {{ loading ? 'Sending...' : 'Send Message' }}
             </button>
+
+            <!-- Cloudflare Turnstile -->
+            <div
+              ref="turnstileEl"
+              class="cf-turnstile"
+              :data-sitekey="turnstileSiteKey"
+              data-callback="__turnstileCallback"
+              data-theme="dark"
+            />
           </form>
         </Transition>
       </div>

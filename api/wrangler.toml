@@ -15,6 +15,7 @@ BACKOFFICE_ORIGIN = "https://backoffice.federicoverdi.it"
 CF_ZONE_ID = "90a9171402576affb201e41223313f36"
 FROM_EMAIL = "io@federicoverdi.it"
 NOTIFY_EMAIL = "federicoverdi@me.com"
+TURNSTILE_SECRET = "0x4AAAAAACxT8AQddG8JIgFKyrUFbFXMbLE"
 
 [dev]
 port = 4000

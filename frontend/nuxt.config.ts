@@ -7,7 +7,8 @@ export default defineNuxtConfig({
   ],
   runtimeConfig: {
     public: {
-      apiBase: 'https://api-portfolio.federicoverdi.it' // overridden by NUXT_PUBLIC_API_BASE in dev
+      apiBase: 'https://api-portfolio.federicoverdi.it', // overridden by NUXT_PUBLIC_API_BASE in dev
+      turnstileSiteKey: '0x4AAAAAACxT8HrbY03cZBKD'
     }
   },
   nitro: {
@@ -22,6 +23,9 @@ export default defineNuxtConfig({
       title: 'Federico Verdi — Portfolio',
       meta: [
         { name: 'description', content: 'Portfolio personale di Federico Verdi — Web Developer' }
+      ],
+      script: [
+        { src: 'https://challenges.cloudflare.com/turnstile/v0/api.js', async: true, defer: true }
       ],
       link: [
         {

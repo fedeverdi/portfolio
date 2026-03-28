@@ -10,6 +10,7 @@ export interface AppBindings {
   RESEND_API_KEY: string
   FROM_EMAIL: string
   NOTIFY_EMAIL: string
+  TURNSTILE_SECRET: string
 }
 
 export interface CaseStudy {
