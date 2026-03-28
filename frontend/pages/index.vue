@@ -1,9 +1,10 @@
 <script setup lang="ts">
 const config = useRuntimeConfig()
+const apiBase = config.public.apiBase || 'https://api-portfolio.federicoverdi.it'
 
-const { data: settings } = await useFetch<Record<string, string>>(
-  `${config.public.apiBase}/api/public/settings`,
-  { server: true }
+const { data: settings, error } = await useFetch<Record<string, string>>(
+  `${apiBase}/api/public/settings`,
+  { server: true, default: () => ({ site_status: 'under_construction' }) }
 )
 
 const isLive = computed(() => settings.value?.site_status === 'published')
