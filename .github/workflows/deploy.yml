@@ -57,15 +57,15 @@ jobs:
         run: npm ci
         working-directory: frontend
 
-      - name: Generate static site
-        run: npm run generate
+      - name: Build
+        run: npm run build
         working-directory: frontend
         env:
           NUXT_PUBLIC_API_BASE: https://api-portfolio.federicoverdi.it
           NUXT_PUBLIC_SITE_URL: https://portfolio.federicoverdi.it
 
       - name: Deploy to Cloudflare Pages
-        run: npx wrangler@latest pages deploy .output/public --project-name=myportfolio-frontend
+        run: npx wrangler@latest pages deploy .output/public --project-name=myportfolio-frontend --compatibility-date=2024-11-01 --compatibility-flags=nodejs_compat
         working-directory: frontend
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CF_API_TOKEN }}

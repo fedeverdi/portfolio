@@ -3,7 +3,7 @@ const config = useRuntimeConfig()
 
 const { data: settings } = await useFetch<Record<string, string>>(
   `${config.public.apiBase}/api/public/settings`,
-  { server: true, default: () => ({ site_status: 'under_construction' }) }
+  { server: true }
 )
 
 const isLive = computed(() => settings.value?.site_status === 'published')
