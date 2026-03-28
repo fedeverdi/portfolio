@@ -7,7 +7,7 @@ export default defineNuxtConfig({
   ],
   runtimeConfig: {
     public: {
-      apiBase: '' // overridden by NUXT_PUBLIC_API_BASE in production
+      apiBase: 'https://api-portfolio.federicoverdi.it' // overridden by NUXT_PUBLIC_API_BASE in dev
     }
   },
   nitro: {
