@@ -14,7 +14,7 @@ export default defineNuxtConfig({
     preset: process.env.NODE_ENV === 'development' ? undefined : 'cloudflare_pages',
     routeRules: process.env.NODE_ENV === 'development'
       ? { '/api/**': { proxy: 'http://localhost:4000/api/**' } }
-      : {}
+      : { '/': { headers: { 'cache-control': 'public, s-maxage=31536000' } } }
   },
   app: {
     head: {

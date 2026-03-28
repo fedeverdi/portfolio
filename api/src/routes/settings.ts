@@ -19,7 +19,7 @@ settingsRouter.get('/', async (c) => {
   return c.json(obj)
 })
 
-// PUT /api/settings — upserts each key/value pair
+// PUT /api/settings — upserts each key/value pair then purges frontend cache
 settingsRouter.put('/', async (c) => {
   const body = await c.req.json<Record<string, string>>()
   const entries = Object.entries(body)
@@ -31,5 +31,21 @@ settingsRouter.put('/', async (c) => {
       .bind(key, value)
       .run()
   }
+
+  // Purge Cloudflare cache for the frontend
+  if (c.env.CF_ZONE_ID && c.env.CF_PURGE_TOKEN) {
+    await fetch(
+      `https://api.cloudflare.com/client/v4/zones/${c.env.CF_ZONE_ID}/purge_cache`,
+      {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${c.env.CF_PURGE_TOKEN}`,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ files: ['https://portfolio.federicoverdi.it/'] })
+      }
+    )
+  }
+
   return c.json({ ok: true })
 })

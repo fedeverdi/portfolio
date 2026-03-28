@@ -5,6 +5,8 @@ export interface AppBindings {
   ADMIN_PASSWORD: string
   FRONTEND_ORIGIN: string
   BACKOFFICE_ORIGIN: string
+  CF_ZONE_ID: string
+  CF_PURGE_TOKEN: string
 }
 
 export interface CaseStudy {
