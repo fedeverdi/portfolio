@@ -2,11 +2,12 @@ name = "myportfolio-api"
 main = "src/index.ts"
 compatibility_date = "2024-11-01"
 compatibility_flags = ["nodejs_compat"]
+account_id = "60128e897ac8700f4cc174bc06a4cfbc"
 
 [[d1_databases]]
 binding = "DB"
 database_name = "myportfolio-db"
-database_id = "4b6920d6-7dcd-46b0-b1ff-2c2899e7d072"
+database_id = "673d66d8-1afc-451c-84fd-a0de2ca52110"
 
 [vars]
 FRONTEND_ORIGIN = "https://myportfolio-frontend-bia.pages.dev"
