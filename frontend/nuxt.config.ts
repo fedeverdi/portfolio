@@ -8,7 +8,7 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       apiBase: 'https://api-portfolio.federicoverdi.it', // overridden by NUXT_PUBLIC_API_BASE in dev
-      turnstileSiteKey: '0x4AAAAAACxT8HrbY03cZBKD'
+      turnstileSiteKey: '0x4AAAAAACxUAfyDs5QDQFxj'
     }
   },
   nitro: {
