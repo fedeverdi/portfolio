@@ -12,7 +12,7 @@ function scrollToPortfolio() {
     <div class="grid grid-cols-12 gap-8 items-center">
       <div class="col-span-12 lg:col-span-8">
         <span class="inline-block text-primary tracking-[0.2em] text-[10px] uppercase mb-6 font-semibold">
-          Full-Stack Developer // Vue &amp; Nuxt Specialist
+          Senior Web Developer &amp; Solutions Architect
         </span>
         <h1 class="text-5xl md:text-7xl lg:text-8xl font-bold leading-[0.9] tracking-tighter text-on-surface mb-8 font-headline">
           FEDERICO VERDI: BUILDING FAST, SCALABLE WEB EXPERIENCES.

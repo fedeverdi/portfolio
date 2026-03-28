@@ -15,7 +15,7 @@
     <!-- Main content -->
     <div class="text-center px-8 max-w-4xl">
       <span class="inline-block text-primary tracking-[0.2em] text-[10px] uppercase mb-6 font-semibold">
-        Full-Stack Developer // Vue &amp; Nuxt Specialist
+        Full-Stack Developer // Senior Web Developer &amp; Solutions Architect
       </span>
 
       <h1 class="text-5xl md:text-7xl lg:text-8xl font-bold leading-[0.9] tracking-tighter font-headline mb-8">
