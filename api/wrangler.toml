@@ -9,7 +9,7 @@ database_name = "myportfolio-db"
 database_id = "4b6920d6-7dcd-46b0-b1ff-2c2899e7d072"
 
 [vars]
-FRONTEND_ORIGIN = "https://myportfolio-frontend.pages.dev"
+FRONTEND_ORIGIN = "https://myportfolio-frontend-bia.pages.dev"
 BACKOFFICE_ORIGIN = "https://myportfolio-backoffice.pages.dev"
 
 [dev]
