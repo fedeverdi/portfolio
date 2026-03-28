@@ -15,7 +15,18 @@ export default defineNuxtConfig({
     preset: process.env.NODE_ENV === 'development' ? undefined : 'cloudflare_pages',
     routeRules: process.env.NODE_ENV === 'development'
       ? { '/api/**': { proxy: 'http://localhost:4000/api/**' } }
-      : { '/': { headers: { 'cache-control': 'public, s-maxage=31536000, max-age=0, must-revalidate' } } }
+      : {
+          '/': { headers: { 'cache-control': 'public, s-maxage=31536000, max-age=0, must-revalidate' } },
+          '/**': {
+            headers: {
+              'content-security-policy': "default-src 'self'; script-src 'self' 'unsafe-inline' https://challenges.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob: https:; connect-src 'self' https://api-portfolio.federicoverdi.it https://challenges.cloudflare.com; frame-src https://challenges.cloudflare.com; worker-src blob:; object-src 'none'; base-uri 'self'",
+              'x-content-type-options': 'nosniff',
+              'x-frame-options': 'DENY',
+              'referrer-policy': 'strict-origin-when-cross-origin',
+              'permissions-policy': 'camera=(), microphone=(), geolocation=()'
+            }
+          }
+        }
   },
   app: {
     head: {
