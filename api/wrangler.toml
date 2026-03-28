@@ -10,8 +10,8 @@ database_name = "myportfolio-db"
 database_id = "673d66d8-1afc-451c-84fd-a0de2ca52110"
 
 [vars]
-FRONTEND_ORIGIN = "https://myportfolio-frontend-e67.pages.dev"
-BACKOFFICE_ORIGIN = "https://myportfolio-backoffice.pages.dev"
+FRONTEND_ORIGIN = "https://portfolio.federicoverdi.it"
+BACKOFFICE_ORIGIN = "https://backoffice.federicoverdi.it"
 
 [dev]
 port = 4000

@@ -61,7 +61,8 @@ jobs:
         run: npm run generate
         working-directory: frontend
         env:
-          NUXT_PUBLIC_API_BASE: https://myportfolio-api.federicoverdi.workers.dev
+          NUXT_PUBLIC_API_BASE: https://api-portfolio.federicoverdi.it
+          NUXT_PUBLIC_SITE_URL: https://portfolio.federicoverdi.it
 
       - name: Deploy to Cloudflare Pages
         run: npx wrangler@latest pages deploy .output/public --project-name=myportfolio-frontend
@@ -93,7 +94,8 @@ jobs:
         run: npm run build
         working-directory: backoffice
         env:
-          VITE_API_BASE: https://myportfolio-api.federicoverdi.workers.dev
+          VITE_API_BASE: https://api-portfolio.federicoverdi.it
+          VITE_APP_URL: https://backoffice.federicoverdi.it
 
       - name: Deploy to Cloudflare Pages
         run: npx wrangler@latest pages deploy dist --project-name=myportfolio-backoffice
