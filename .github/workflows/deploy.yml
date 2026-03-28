@@ -65,7 +65,7 @@ jobs:
           NUXT_PUBLIC_SITE_URL: https://portfolio.federicoverdi.it
 
       - name: Deploy to Cloudflare Pages
-        run: npx wrangler@latest pages deploy .output/public --project-name=myportfolio-frontend
+        run: npx wrangler@latest pages deploy dist --project-name=myportfolio-frontend
         working-directory: frontend
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
