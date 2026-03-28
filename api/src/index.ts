@@ -6,6 +6,7 @@ import { publicRouter } from './routes/public.js'
 import { caseStudiesRouter } from './routes/caseStudies.js'
 import { settingsRouter } from './routes/settings.js'
 import { searchRouter } from './routes/search.js'
+import { textsRouter } from './routes/texts.js'
 
 const app = new Hono<{ Bindings: AppBindings }>()
 
@@ -23,6 +24,7 @@ app.route('/api/public', publicRouter)
 app.route('/api/case-studies', caseStudiesRouter)
 app.route('/api/settings', settingsRouter)
 app.route('/api/search', searchRouter)
+app.route('/api/texts', textsRouter)
 
 app.get('/robots.txt', (c) =>
   c.text('User-agent: *\nDisallow: /\n', 200, { 'Content-Type': 'text/plain' })

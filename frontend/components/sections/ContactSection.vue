@@ -1,4 +1,6 @@
 <script setup lang="ts">
+const { t } = await useTexts()
+
 const form = reactive({
   name: '',
   email: '',
@@ -26,21 +28,21 @@ async function handleSubmit() {
       <!-- Left: info -->
       <div class="col-span-12 lg:col-span-6">
         <h2 class="text-5xl font-bold tracking-tighter mb-8 font-headline">
-          INIZIAMO A COLLABORARE
+          {{ t('contact.title', 'INIZIAMO A COLLABORARE') }}
         </h2>
         <p class="text-on-surface-variant text-lg max-w-md mb-12">
-          Hai un progetto in mente? Parliamone. Sono disponibile per collaborazioni freelance e opportunità full-time.
+          {{ t('contact.description', '') }}
         </p>
         <div class="flex flex-col space-y-4">
           <a
-            href="mailto:hello@federicoverdi.dev"
+            :href="`mailto:${t('contact.email', 'federicoverdi@me.com')}`"
             class="text-2xl font-light hover:text-primary transition-colors underline underline-offset-8 decoration-stone-700"
           >
-            hello@federicoverdi.dev
+            {{ t('contact.email', 'federicoverdi@me.com') }}
           </a>
           <div class="flex space-x-8 pt-4">
             <a
-              href="https://linkedin.com/in/federicoverdi"
+              :href="t('contact.linkedin_url', '#')"
               target="_blank"
               rel="noopener"
               class="text-[10px] uppercase tracking-widest font-bold text-stone-400 hover:text-on-surface transition-colors flex items-center gap-2"
@@ -49,7 +51,7 @@ async function handleSubmit() {
               LinkedIn
             </a>
             <a
-              href="https://github.com/federicoverdi"
+              :href="t('contact.github_url', '#')"
               target="_blank"
               rel="noopener"
               class="text-[10px] uppercase tracking-widest font-bold text-stone-400 hover:text-on-surface transition-colors flex items-center gap-2"

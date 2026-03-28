@@ -1,4 +1,6 @@
 <script setup lang="ts">
+const { t } = await useTexts()
+
 interface Skill {
   name: string
   level: 'PRO' | 'ADV' | 'MID'
@@ -51,12 +53,10 @@ const categories: SkillCategory[] = [
         <!-- Intro text -->
         <div class="col-span-12 lg:col-span-4">
           <h2 class="text-3xl font-bold tracking-tight mb-6 font-headline">
-            TECHNICAL SUMMARY
+            {{ t('skills.title', 'TECHNICAL SUMMARY') }}
           </h2>
           <p class="text-on-surface-variant leading-relaxed">
-            Specializzato nello sviluppo di interfacce moderne, performanti e accessibili.
-            Il mio approccio privilegia codice componibile, tipizzazione rigorosa e
-            un'esperienza utente curata nei minimi dettagli.
+            {{ t('skills.description', '') }}
           </p>
         </div>
 
