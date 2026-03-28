@@ -4,6 +4,67 @@ import { parseRow } from '../types.js'
 
 export const publicRouter = new Hono<{ Bindings: AppBindings }>()
 
+function escapeHtml(str: string): string {
+  return str
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;')
+}
+
+publicRouter.options('/contact', (c) => new Response(null, { status: 204 }))
+
+publicRouter.post('/contact', async (c) => {
+  const body = await c.req.json().catch(() => null)
+  if (!body) return c.json({ error: 'Invalid JSON' }, 400)
+
+  const name = (body.name ?? '').trim()
+  const email = (body.email ?? '').trim()
+  const message = (body.message ?? '').trim()
+
+  if (!name || !email || !message) {
+    return c.json({ error: 'All fields are required' }, 400)
+  }
+
+  // Basic email format check
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    return c.json({ error: 'Invalid email address' }, 400)
+  }
+
+  const id = crypto.randomUUID()
+  const now = new Date().toISOString()
+
+  await c.env.DB
+    .prepare('INSERT INTO contact_requests (id, name, email, message, is_read, created_at) VALUES (?, ?, ?, ?, 0, ?)')
+    .bind(id, name, email, message, now)
+    .run()
+
+  // Send notification email via Resend (non-blocking)
+  if (c.env.RESEND_API_KEY) {
+    const from = c.env.FROM_EMAIL ? `Portfolio <${c.env.FROM_EMAIL}>` : 'Portfolio <onboarding@resend.dev>'
+    const safeName = escapeHtml(name)
+    const safeEmail = escapeHtml(email)
+    const safeMessage = escapeHtml(message).replace(/\n/g, '<br>')
+
+    await fetch('https://api.resend.com/emails', {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${c.env.RESEND_API_KEY}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        from,
+        to: [c.env.NOTIFY_EMAIL || c.env.ADMIN_EMAIL],
+        subject: `New contact request from ${name}`,
+        html: `<h2>New contact request</h2><p><strong>Name:</strong> ${safeName}</p><p><strong>Email:</strong> <a href="mailto:${safeEmail}">${safeEmail}</a></p><p><strong>Message:</strong></p><p>${safeMessage}</p>`
+      })
+    })
+  }
+
+  return c.json({ success: true }, 201)
+})
+
 publicRouter.get('/texts', async (c) => {
   const { results } = await c.env.DB
     .prepare('SELECT key, value FROM texts ORDER BY key ASC')

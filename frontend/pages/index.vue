@@ -31,7 +31,7 @@ const isLive = computed(() => settings.value?.site_status === 'published')
         Qualcosa di nuovo sta prendendo forma. Torna presto.
       </p>
       <a
-        :href="`mailto:${settings?.contact_email || 'federicoverdi@me.com'}`"
+        :href="`mailto:${settings?.contact_email || 'io@federicoverdi.it'}`"
         class="inline-flex items-center gap-3 border border-stone-700 text-[#e9e1dd] px-10 py-4 font-bold text-sm tracking-widest uppercase hover:bg-stone-800 transition-all rounded group"
       >
         Contattami

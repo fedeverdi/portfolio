@@ -1,5 +1,7 @@
 <script setup lang="ts">
 const { t } = await useTexts()
+const config = useRuntimeConfig()
+const apiBase = (config.public.apiBase as string) || 'https://api-portfolio.federicoverdi.it'
 
 const form = reactive({
   name: '',
@@ -9,16 +11,25 @@ const form = reactive({
 
 const submitted = ref(false)
 const loading = ref(false)
+const error = ref('')
 
 async function handleSubmit() {
   loading.value = true
-  // Simulate async submission — replace with real API call
-  await new Promise(resolve => setTimeout(resolve, 800))
-  loading.value = false
-  submitted.value = true
-  form.name = ''
-  form.email = ''
-  form.message = ''
+  error.value = ''
+  try {
+    await $fetch(`${apiBase}/api/public/contact`, {
+      method: 'POST',
+      body: { name: form.name, email: form.email, message: form.message }
+    })
+    submitted.value = true
+    form.name = ''
+    form.email = ''
+    form.message = ''
+  } catch {
+    error.value = 'Something went wrong. Please try again.'
+  } finally {
+    loading.value = false
+  }
 }
 </script>
 
@@ -35,10 +46,10 @@ async function handleSubmit() {
         </p>
         <div class="flex flex-col space-y-4">
           <a
-            :href="`mailto:${t('contact.email', 'federicoverdi@me.com')}`"
+            :href="`mailto:${t('contact.email', 'io@federicoverdi.it')}`"
             class="text-2xl font-light hover:text-primary transition-colors underline underline-offset-8 decoration-stone-700"
           >
-            {{ t('contact.email', 'federicoverdi@me.com') }}
+            {{ t('contact.email', 'io@federicoverdi.it') }}
           </a>
           <div class="flex space-x-8 pt-4">
             <a
@@ -69,13 +80,13 @@ async function handleSubmit() {
           <div v-if="submitted" key="thank-you" class="flex flex-col items-start justify-center h-full gap-4">
             <span class="material-symbols-outlined text-primary text-4xl">check_circle</span>
             <p class="text-on-surface-variant text-lg">
-              Messaggio inviato! Ti rispondo al più presto.
+              Message sent! I'll get back to you soon.
             </p>
             <button
               class="text-[10px] uppercase tracking-widest text-stone-400 hover:text-on-surface transition-colors underline underline-offset-4"
               @click="submitted = false"
             >
-              Invia un altro messaggio
+              Send another message
             </button>
           </div>
 
@@ -86,15 +97,18 @@ async function handleSubmit() {
             novalidate
             @submit.prevent="handleSubmit"
           >
+            <div v-if="error" class="text-sm text-red-500">
+              {{ error }}
+            </div>
             <div class="group relative">
               <label class="text-[10px] uppercase tracking-widest font-bold text-stone-500 block mb-2">
-                Nome
+                Name
               </label>
               <input
                 v-model="form.name"
                 type="text"
                 required
-                placeholder="Il tuo nome"
+                placeholder="Your name"
                 class="w-full bg-transparent border-0 border-b-2 border-outline-variant py-4 px-0 focus:ring-0 focus:border-primary transition-colors placeholder:text-stone-700 rounded-t text-on-surface"
               />
             </div>
@@ -106,19 +120,19 @@ async function handleSubmit() {
                 v-model="form.email"
                 type="email"
                 required
-                placeholder="La tua email"
+                placeholder="Your email"
                 class="w-full bg-transparent border-0 border-b-2 border-outline-variant py-4 px-0 focus:ring-0 focus:border-primary transition-colors placeholder:text-stone-700 rounded-t text-on-surface"
               />
             </div>
             <div class="group relative">
               <label class="text-[10px] uppercase tracking-widest font-bold text-stone-500 block mb-2">
-                Messaggio
+                Message
               </label>
               <textarea
                 v-model="form.message"
                 required
                 rows="4"
-                placeholder="Descrivi il progetto o la tua richiesta"
+                placeholder="Describe your project or request"
                 class="w-full bg-transparent border-0 border-b-2 border-outline-variant py-4 px-0 focus:ring-0 focus:border-primary transition-colors placeholder:text-stone-700 resize-none rounded-t text-on-surface"
               />
             </div>
@@ -127,7 +141,7 @@ async function handleSubmit() {
               :disabled="loading"
               class="bg-primary text-on-primary w-full py-6 font-bold text-sm tracking-widest uppercase hover:bg-primary-fixed-dim transition-all rounded disabled:opacity-60 disabled:cursor-wait"
             >
-              {{ loading ? 'Invio in corso...' : 'Invia Messaggio' }}
+              {{ loading ? 'Sending...' : 'Send Message' }}
             </button>
           </form>
         </Transition>

@@ -7,6 +7,9 @@ export interface AppBindings {
   BACKOFFICE_ORIGIN: string
   CF_ZONE_ID: string
   CF_PURGE_TOKEN: string
+  RESEND_API_KEY: string
+  FROM_EMAIL: string
+  NOTIFY_EMAIL: string
 }
 
 export interface CaseStudy {

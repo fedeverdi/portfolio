@@ -19,7 +19,7 @@ INSERT OR IGNORE INTO texts VALUES
   ('skills.description',     'Specializzato nello sviluppo di interfacce moderne, performanti e accessibili. Il mio approccio privilegia codice componibile, tipizzazione rigorosa e un''esperienza utente curata nei minimi dettagli.', 'Descrizione sezione skills', datetime('now')),
   ('contact.title',          'INIZIAMO A COLLABORARE',                       'Titolo sezione contatti',                                datetime('now')),
   ('contact.description',    'Hai un progetto in mente? Parliamone. Sono disponibile per collaborazioni freelance e opportunità full-time.', 'Descrizione sezione contatti', datetime('now')),
-  ('contact.email',          'federicoverdi@me.com',                         'Email di contatto visibile nel frontend',                datetime('now')),
+  ('contact.email',          'io@federicoverdi.it',                         'Email di contatto visibile nel frontend',                datetime('now')),
   ('contact.linkedin_url',   'https://linkedin.com/in/federicoverdi',        'URL LinkedIn',                                           datetime('now')),
   ('contact.github_url',     'https://github.com/federicoverdi',             'URL GitHub',                                             datetime('now')),
   ('footer.tagline',         '© 2025 Federico Verdi. Built with Nuxt 3.',    'Testo copyright nel footer',                             datetime('now')),

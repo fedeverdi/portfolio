@@ -4,7 +4,7 @@ const { t } = await useTexts()
 const footerLinks = computed(() => [
   { label: 'LinkedIn', href: t('contact.linkedin_url', 'https://linkedin.com/in/federicoverdi') },
   { label: 'GitHub', href: t('contact.github_url', 'https://github.com/federicoverdi') },
-  { label: 'Email', href: `mailto:${t('contact.email', 'federicoverdi@me.com')}` }
+  { label: 'Email', href: `mailto:${t('contact.email', 'io@federicoverdi.it')}` }
 ])
 </script>
 

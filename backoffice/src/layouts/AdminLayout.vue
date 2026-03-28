@@ -58,6 +58,7 @@ const totalResults = () =>
 const navLinks = [
   { name: 'Dashboard', to: '/', icon: 'dashboard', match: '' },
   { name: 'Case Studies', to: '/case-studies', icon: 'work', match: 'case-studies' },
+  { name: 'Contacts', to: '/contacts', icon: 'inbox', match: 'contacts' },
   { name: 'Texts', to: '/texts', icon: 'edit_note', match: 'texts' },
   { name: 'Settings', to: '/settings', icon: 'settings', match: 'settings' }
 ]

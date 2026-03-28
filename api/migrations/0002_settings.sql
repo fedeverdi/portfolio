@@ -7,7 +7,7 @@ CREATE TABLE IF NOT EXISTS settings (
 INSERT OR IGNORE INTO settings VALUES
   ('owner_name',    'Federico Verdi'),
   ('bio',           'Senior Web Developer & Solutions Architect'),
-  ('contact_email', 'federicoverdi@me.com'),
+  ('contact_email', 'io@federicoverdi.it'),
   ('github_url',    ''),
   ('linkedin_url',  ''),
   ('site_status',   'under_construction');
