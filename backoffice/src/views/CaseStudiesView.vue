@@ -26,7 +26,7 @@ const stats = computed(() => store.stats())
 </script>
 
 <template>
-  <div class="p-12 max-w-7xl mx-auto">
+  <div class="p-12">
     <!-- Page header -->
     <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
       <div>

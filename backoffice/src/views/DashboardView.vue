@@ -20,7 +20,7 @@ const statCards = () => {
 </script>
 
 <template>
-  <div class="p-12 max-w-7xl mx-auto">
+  <div class="p-12">
     <!-- Page header -->
     <div class="flex justify-between items-end mb-8">
       <div>

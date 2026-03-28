@@ -34,6 +34,11 @@ const router = createRouter({
           path: 'case-studies/:id',
           name: 'CaseStudyEdit',
           component: () => import('@/views/CaseStudyDetailView.vue')
+        },
+        {
+          path: 'settings',
+          name: 'Settings',
+          component: () => import('@/views/SettingsView.vue')
         }
       ]
     },

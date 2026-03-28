@@ -9,8 +9,7 @@ const auth = useAuthStore()
 const navLinks = [
   { name: 'Dashboard', to: '/', icon: 'dashboard', match: '' },
   { name: 'Case Studies', to: '/case-studies', icon: 'work', match: 'case-studies' },
-  { name: 'Analytics', to: '#', icon: 'analytics', match: 'analytics' },
-  { name: 'Settings', to: '#', icon: 'settings', match: 'settings' }
+  { name: 'Settings', to: '/settings', icon: 'settings', match: 'settings' }
 ]
 
 function isActive(link: { match: string }) {

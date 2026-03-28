@@ -64,7 +64,7 @@ async function save() {
 </script>
 
 <template>
-  <div class="pb-16 px-12 min-h-screen pt-10 max-w-7xl mx-auto">
+  <div class="pb-16 px-12 min-h-screen pt-10">
     <!-- Breadcrumbs & header -->
     <div class="mb-12">
       <nav class="flex items-center gap-2 text-[0.6875rem] font-label uppercase tracking-wider text-on-surface-variant mb-4">
