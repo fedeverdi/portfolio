@@ -1,0 +1,7 @@
+JWT_SECRET=dev-secret-change-in-production
+ADMIN_EMAIL=admin@portfolio.dev
+ADMIN_PASSWORD=admin123
+FRONTEND_ORIGIN=http://localhost:3000
+BACKOFFICE_ORIGIN=http://localhost:3001
+CF_ZONE_ID=
+CF_PURGE_TOKEN=

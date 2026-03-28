@@ -7,7 +7,8 @@
     "dev:frontend": "npm run dev --prefix frontend",
     "dev:backoffice": "npm run dev --prefix backoffice",
     "build": "concurrently \"npm run build --prefix api\" \"npm run build --prefix frontend\" \"npm run build --prefix backoffice\"",
-    "install:all": "npm install --prefix api && npm install --prefix frontend && npm install --prefix backoffice"
+    "install:all": "npm install --prefix api && npm install --prefix frontend && npm install --prefix backoffice",
+    "setup:local": "npm run db:migrate:local --prefix api"
   },
   "devDependencies": {
     "concurrently": "^8.2.2"
