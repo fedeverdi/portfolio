@@ -14,26 +14,39 @@ const submitted = ref(false)
 const loading = ref(false)
 const error = ref('')
 const turnstileToken = ref('')
-const turnstileEl = ref<HTMLElement | null>(null)
+const turnstileContainer = ref<HTMLElement | null>(null)
 
 declare global {
   interface Window {
-    turnstile?: { reset: (el: HTMLElement) => void }
-    __turnstileCallback?: (token: string) => void
-    __turnstileToken?: string
+    turnstile?: {
+      render: (container: HTMLElement, options: Record<string, unknown>) => string
+      reset: (widgetId: string) => void
+    }
   }
 }
 
+let widgetId = ''
+
 onMounted(() => {
-  // Pick up token if Turnstile already fired before mount
-  if (window.__turnstileToken) {
-    turnstileToken.value = window.__turnstileToken
-  }
-  // Override callback to keep reactive ref in sync
-  window.__turnstileCallback = (token: string) => {
-    turnstileToken.value = token
-    window.__turnstileToken = token
-  }
+  // Poll until Turnstile script is loaded (defer can be slow)
+  const interval = setInterval(() => {
+    if (window.turnstile && turnstileContainer.value) {
+      clearInterval(interval)
+      widgetId = window.turnstile.render(turnstileContainer.value, {
+        sitekey: turnstileSiteKey,
+        theme: 'dark',
+        callback: (token: string) => {
+          turnstileToken.value = token
+        },
+        'expired-callback': () => {
+          turnstileToken.value = ''
+        },
+        'error-callback': () => {
+          turnstileToken.value = ''
+        }
+      })
+    }
+  }, 100)
 })
 
 async function handleSubmit() {
@@ -55,8 +68,8 @@ async function handleSubmit() {
     turnstileToken.value = ''
   } catch {
     error.value = 'Something went wrong. Please try again.'
-    if (window.turnstile && turnstileEl.value) {
-      window.turnstile.reset(turnstileEl.value)
+    if (window.turnstile && widgetId) {
+      window.turnstile.reset(widgetId)
     }
     turnstileToken.value = ''
   } finally {
@@ -177,13 +190,7 @@ async function handleSubmit() {
             </button>
 
             <!-- Cloudflare Turnstile -->
-            <div
-              ref="turnstileEl"
-              class="cf-turnstile"
-              :data-sitekey="turnstileSiteKey"
-              data-callback="__turnstileCallback"
-              data-theme="dark"
-            />
+            <div ref="turnstileContainer" />
           </form>
         </Transition>
       </div>
