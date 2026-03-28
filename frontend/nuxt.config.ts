@@ -25,7 +25,7 @@ export default defineNuxtConfig({
         { name: 'description', content: 'Portfolio personale di Federico Verdi — Web Developer' }
       ],
       script: [
-        { src: 'https://challenges.cloudflare.com/turnstile/v0/api.js', async: true, defer: true }
+        { src: 'https://challenges.cloudflare.com/turnstile/v0/api.js', defer: true }
       ],
       link: [
         {
