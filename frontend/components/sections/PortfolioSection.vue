@@ -49,10 +49,11 @@ function specNo(index: number) {
     </div>
 
     <div v-else class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-      <article
+      <NuxtLink
         v-for="(project, index) in projects"
         :key="project.id"
-        class="group relative bg-surface-container border border-outline-variant/5 overflow-hidden rounded"
+        :to="`/case-studies/${project.id}`"
+        class="group relative bg-surface-container border border-outline-variant/5 overflow-hidden rounded block"
       >
         <!-- Cover image / placeholder -->
         <div class="aspect-[16/10] bg-surface-container-lowest relative overflow-hidden">
@@ -90,8 +91,14 @@ function specNo(index: number) {
               {{ tag }}
             </span>
           </div>
+
+          <!-- Arrow -->
+          <div class="mt-8 flex items-center gap-2 text-[10px] uppercase tracking-widest font-bold text-stone-500 group-hover:text-on-surface transition-colors">
+            <span>View case study</span>
+            <span class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">arrow_forward</span>
+          </div>
         </div>
-      </article>
+      </NuxtLink>
     </div>
   </section>
 </template>
