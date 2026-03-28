@@ -10,6 +10,7 @@ jobs:
   deploy-api:
     name: Deploy API Worker
     runs-on: ubuntu-latest
+    environment: mein
     steps:
       - uses: actions/checkout@v4
 
@@ -42,6 +43,7 @@ jobs:
     name: Deploy Frontend
     runs-on: ubuntu-latest
     needs: deploy-api
+    environment: mein
     steps:
       - uses: actions/checkout@v4
 
@@ -73,6 +75,7 @@ jobs:
     name: Deploy Backoffice
     runs-on: ubuntu-latest
     needs: deploy-api
+    environment: mein
     steps:
       - uses: actions/checkout@v4
 
