@@ -2,7 +2,7 @@
 import { useRoute, useRouter } from 'vue-router'
 import { useAuthStore } from '@/stores/auth'
 import { RouterLink, RouterView } from 'vue-router'
-import { ref, watch } from 'vue'
+import { ref } from 'vue'
 
 const route = useRoute()
 const router = useRouter()
