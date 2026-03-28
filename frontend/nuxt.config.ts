@@ -25,6 +25,8 @@ export default defineNuxtConfig({
         { name: 'description', content: 'Portfolio personale di Federico Verdi — Web Developer' }
       ],
       script: [
+        // Pre-define callback BEFORE Turnstile script runs to avoid race condition
+        { innerHTML: 'window.__turnstileToken="";window.__turnstileCallback=function(t){window.__turnstileToken=t;}' },
         { src: 'https://challenges.cloudflare.com/turnstile/v0/api.js', defer: true }
       ],
       link: [

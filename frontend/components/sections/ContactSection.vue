@@ -20,12 +20,19 @@ declare global {
   interface Window {
     turnstile?: { reset: (el: HTMLElement) => void }
     __turnstileCallback?: (token: string) => void
+    __turnstileToken?: string
   }
 }
 
 onMounted(() => {
+  // Pick up token if Turnstile already fired before mount
+  if (window.__turnstileToken) {
+    turnstileToken.value = window.__turnstileToken
+  }
+  // Override callback to keep reactive ref in sync
   window.__turnstileCallback = (token: string) => {
     turnstileToken.value = token
+    window.__turnstileToken = token
   }
 })
 
