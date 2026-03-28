@@ -1,11 +1,12 @@
 <script setup lang="ts">
 import { onMounted, ref, computed } from 'vue'
-import { useRouter } from 'vue-router'
+import { useRouter, useRoute } from 'vue-router'
 import { useCaseStudiesStore } from '@/stores/caseStudies'
 
 const store = useCaseStudiesStore()
 const router = useRouter()
-const search = ref('')
+const route = useRoute()
+const search = ref((route.query.q as string) ?? '')
 
 onMounted(() => store.fetchAll())
 

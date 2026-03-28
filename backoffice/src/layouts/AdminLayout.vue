@@ -1,10 +1,59 @@
 <script setup lang="ts">
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import { useAuthStore } from '@/stores/auth'
 import { RouterLink, RouterView } from 'vue-router'
+import { ref, watch } from 'vue'
 
 const route = useRoute()
+const router = useRouter()
 const auth = useAuthStore()
+
+const API_BASE = import.meta.env.VITE_API_BASE ?? ''
+
+interface SearchResults {
+  caseStudies: { id: string; title: string; client: string; status: string }[]
+}
+
+const headerSearch = ref('')
+const searchResults = ref<SearchResults>({ caseStudies: [] })
+const searchOpen = ref(false)
+const searchLoading = ref(false)
+let debounceTimer: ReturnType<typeof setTimeout>
+
+async function onHeaderSearch() {
+  const q = headerSearch.value.trim()
+  if (q.length < 2) {
+    searchResults.value = { caseStudies: [] }
+    searchOpen.value = false
+    return
+  }
+  searchLoading.value = true
+  searchOpen.value = true
+  clearTimeout(debounceTimer)
+  debounceTimer = setTimeout(async () => {
+    try {
+      const res = await fetch(`${API_BASE}/api/search?q=${encodeURIComponent(q)}`, {
+        headers: auth.authHeaders()
+      })
+      if (res.ok) searchResults.value = await res.json() as SearchResults
+    } finally {
+      searchLoading.value = false
+    }
+  }, 250)
+}
+
+function closeSearch() {
+  setTimeout(() => { searchOpen.value = false }, 150)
+}
+
+function goToResult(path: string) {
+  searchOpen.value = false
+  headerSearch.value = ''
+  router.push(path)
+}
+
+const totalResults = () =>
+  searchResults.value.caseStudies.length
 
 const navLinks = [
   { name: 'Dashboard', to: '/', icon: 'dashboard', match: '' },
@@ -73,10 +122,56 @@ function logout() {
         <div class="relative w-full">
           <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-sm">search</span>
           <input
+            v-model="headerSearch"
             type="text"
-            placeholder="Search entries, assets, or projects..."
+            placeholder="Search case studies..."
             class="w-full pl-10 pr-4 py-2 bg-surface-container-low border-none rounded-full text-sm focus:ring-1 focus:ring-outline-variant/20 focus:bg-surface-container-lowest transition-all"
+            @input="onHeaderSearch"
+            @blur="closeSearch"
           />
+
+          <!-- Dropdown results -->
+          <div
+            v-if="searchOpen"
+            class="absolute top-full left-0 right-0 mt-2 bg-surface-container-lowest border border-surface-variant/30 rounded-xl shadow-xl z-50 overflow-hidden"
+          >
+            <!-- Loading -->
+            <div v-if="searchLoading" class="px-4 py-6 text-center text-on-surface-variant text-xs">
+              <span class="material-symbols-outlined animate-spin text-sm">progress_activity</span>
+            </div>
+
+            <!-- No results -->
+            <div v-else-if="totalResults() === 0" class="px-4 py-6 text-center text-on-surface-variant text-xs">
+              Nessun risultato per "<span class="text-on-surface font-medium">{{ headerSearch }}</span>"
+            </div>
+
+            <!-- Case Studies -->
+            <div v-else>
+              <div class="px-4 py-2 border-b border-surface-variant/20">
+                <span class="text-[10px] uppercase tracking-widest font-bold text-on-surface-variant">Case Studies</span>
+              </div>
+              <button
+                v-for="item in searchResults.caseStudies"
+                :key="item.id"
+                class="w-full flex items-center gap-3 px-4 py-3 hover:bg-surface-container-low transition-colors text-left"
+                @mousedown="goToResult(`/case-studies/${item.id}`)"
+              >
+                <span class="material-symbols-outlined text-on-surface-variant text-sm">work</span>
+                <div class="flex-1 min-w-0">
+                  <p class="text-sm font-medium text-on-surface truncate">{{ item.title }}</p>
+                  <p class="text-[11px] text-on-surface-variant">{{ item.client }}</p>
+                </div>
+                <span
+                  class="text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider shrink-0"
+                  :class="{
+                    'bg-primary/10 text-primary': item.status === 'published',
+                    'bg-surface-container-highest text-on-surface-variant': item.status === 'draft',
+                    'bg-outline-variant/30 text-outline': item.status === 'archived'
+                  }"
+                >{{ item.status }}</span>
+              </button>
+            </div>
+          </div>
         </div>
       </div>
       <div class="flex items-center gap-6">
