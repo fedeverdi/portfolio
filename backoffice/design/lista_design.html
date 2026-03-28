@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-tertiary-fixed": "#29394e",
+              "surface-tint": "#565e74",
+              "primary-fixed-dim": "#ccd4ee",
+              "on-primary-fixed-variant": "#535b71",
+              "on-secondary-container": "#455367",
+              "background": "#f7f9fb",
+              "secondary-dim": "#465469",
+              "secondary-fixed": "#d5e3fd",
+              "on-primary-container": "#4a5167",
+              "on-surface": "#2a3439",
+              "primary": "#565e74",
+              "primary-dim": "#4a5268",
+              "on-secondary": "#f8f8ff",
+              "tertiary": "#506076",
+              "on-tertiary-container": "#3c4c61",
+              "secondary-fixed-dim": "#c7d5ee",
+              "surface-container-highest": "#d9e4ea",
+              "error-container": "#fe8983",
+              "surface-bright": "#f7f9fb",
+              "outline": "#717c82",
+              "primary-fixed": "#dae2fd",
+              "tertiary-fixed": "#c8d8f3",
+              "surface-dim": "#cfdce3",
+              "tertiary-container": "#c8d8f3",
+              "surface-variant": "#d9e4ea",
+              "on-secondary-fixed": "#324054",
+              "surface-container-high": "#e1e9ee",
+              "secondary": "#526075",
+              "primary-container": "#dae2fd",
+              "on-tertiary-fixed-variant": "#46556b",
+              "error": "#9f403d",
+              "surface": "#f7f9fb",
+              "surface-container": "#e8eff3",
+              "on-secondary-fixed-variant": "#4e5c71",
+              "tertiary-dim": "#44546a",
+              "outline-variant": "#a9b4b9",
+              "on-error-container": "#752121",
+              "inverse-primary": "#dae2fd",
+              "on-surface-variant": "#566166",
+              "inverse-on-surface": "#9a9d9f",
+              "on-background": "#2a3439",
+              "inverse-surface": "#0b0f10",
+              "secondary-container": "#d5e3fd",
+              "on-error": "#fff7f6",
+              "tertiary-fixed-dim": "#bacae4",
+              "error-dim": "#4e0309",
+              "surface-container-lowest": "#ffffff",
+              "on-tertiary": "#f7f9ff",
+              "on-primary-fixed": "#373f54",
+              "on-primary": "#f7f7ff",
+              "surface-container-low": "#f0f4f7"
+            },
+            fontFamily: {
+              "headline": ["Inter"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-background text-on-surface">
+<!-- SideNavBar Shell -->
+<aside class="fixed left-0 top-0 h-full flex flex-col py-8 px-4 h-screen w-64 border-r border-[#d9e4ea]/30 dark:border-slate-800 bg-[#f7f9fb] dark:bg-slate-900 z-50">
+<div class="mb-10 px-4">
+<h1 class="text-xl font-bold tracking-tighter text-[#565e74] dark:text-white">CaseStudio</h1>
+<p class="text-[0.6875rem] uppercase tracking-widest text-on-surface-variant mt-1">Technical Editorial Admin</p>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-[#64748b] dark:text-slate-500 hover:bg-[#e1e9ee] dark:hover:bg-slate-800 transition-colors duration-200 font-['Inter'] font-medium text-[0.875rem] tracking-tight" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+                Dashboard
+            </a>
+<!-- Active Navigation Logic: Case Studies is active -->
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-[#565e74] dark:text-white font-semibold border-r-2 border-[#565e74] dark:border-slate-400 bg-[#f0f4f7] dark:bg-slate-800 font-['Inter'] text-[0.875rem] tracking-tight" href="#">
+<span class="material-symbols-outlined" data-icon="work">work</span>
+                Case Studies
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-[#64748b] dark:text-slate-500 hover:bg-[#e1e9ee] dark:hover:bg-slate-800 transition-colors duration-200 font-['Inter'] font-medium text-[0.875rem] tracking-tight" href="#">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+                Analytics
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-[#64748b] dark:text-slate-500 hover:bg-[#e1e9ee] dark:hover:bg-slate-800 transition-colors duration-200 font-['Inter'] font-medium text-[0.875rem] tracking-tight" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+                Settings
+            </a>
+</nav>
+<div class="mt-auto px-4 pt-4 border-t border-surface-variant/30">
+<div class="flex items-center gap-3">
+<img alt="Admin User Profile" class="w-8 h-8 rounded-full border border-surface-variant" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCAT7U0WNjFgCiMIvHJKp1jLzMoAIyTDRLqgnduH6_YLMhKNr6LR-8BgaW_UeLfvd6jwlY002g-pYGoYtxJ5dwUsbx8rMKdLSbpBBv3wsDCZ2mKyFETzoVuQW-Cnc63StzXtF_C6OI5R4FHUmWBuXukxBhnD9Z94BtHfWp7XwJaiczTtY9pNrkfxFrCOQ-MNnRUW_kyU-zta4x1nspvWCW0nwiVAhNSYlzl4ljPiflKw4ZiMciO2xugkgy-43M3Kgk7gyJzZYYUBEEa"/>
+<div class="overflow-hidden">
+<p class="text-sm font-semibold truncate">Admin User</p>
+<p class="text-[0.6875rem] text-on-surface-variant truncate">Editor-in-Chief</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- TopNavBar Shell -->
+<header class="fixed top-0 right-0 left-64 h-16 flex justify-between items-center px-8 z-40 bg-[#f7f9fb]/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-[#d9e4ea]/30 dark:border-slate-800">
+<div class="flex items-center flex-1 max-w-xl">
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-sm" data-icon="search">search</span>
+<input class="w-full bg-surface-container-low border-none rounded-xl py-2 pl-10 pr-4 text-sm focus:ring-1 focus:ring-primary/20 transition-all font-body" placeholder="Search entries..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4 text-[#565e74] dark:text-slate-300">
+<button class="p-2 hover:bg-surface-container-high rounded-full transition-colors">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="p-2 hover:bg-surface-container-high rounded-full transition-colors">
+<span class="material-symbols-outlined" data-icon="help_outline">help_outline</span>
+</button>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-64 pt-16 min-h-screen">
+<div class="p-12 max-w-7xl mx-auto">
+<!-- Page Header -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
+<div>
+<div class="flex items-center gap-2 mb-2">
+<div class="w-2 h-2 rounded-full bg-primary"></div>
+<span class="text-[0.6875rem] font-bold tracking-[0.1em] text-secondary uppercase">Database Alpha</span>
+</div>
+<h2 class="text-[3.5rem] font-bold tracking-tighter leading-tight text-on-surface">Case Studies</h2>
+<p class="text-on-surface-variant max-w-md mt-4 font-body leading-relaxed">
+                        Manage technical documentation and architectural client projects within the Technical Editorial workspace.
+                    </p>
+</div>
+<button class="flex items-center gap-2 bg-primary text-on-primary px-6 py-3 rounded-xl font-medium hover:opacity-90 transition-all shadow-sm active:scale-95">
+<span class="material-symbols-outlined text-sm" data-icon="add">add</span>
+                    Create New Case
+                </button>
+</div>
+<!-- Dashboard Bento / Filters -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-10">
+<div class="col-span-1 bg-surface-container-low p-6 rounded-xl border-l-4 border-primary">
+<p class="text-[0.6875rem] uppercase font-bold text-on-surface-variant tracking-wider">Total Active</p>
+<p class="text-3xl font-bold mt-1">124</p>
+</div>
+<div class="col-span-1 bg-surface-container-lowest p-6 rounded-xl shadow-[0_32px_64px_-16px_rgba(42,52,57,0.04)]">
+<p class="text-[0.6875rem] uppercase font-bold text-on-surface-variant tracking-wider">Published</p>
+<p class="text-3xl font-bold mt-1">89</p>
+</div>
+<div class="col-span-1 bg-surface-container-lowest p-6 rounded-xl shadow-[0_32px_64px_-16px_rgba(42,52,57,0.04)]">
+<p class="text-[0.6875rem] uppercase font-bold text-on-surface-variant tracking-wider">In Draft</p>
+<p class="text-3xl font-bold mt-1">12</p>
+</div>
+<div class="col-span-1 bg-surface-container-lowest p-6 rounded-xl shadow-[0_32px_64px_-16px_rgba(42,52,57,0.04)]">
+<p class="text-[0.6875rem] uppercase font-bold text-on-surface-variant tracking-wider">Archived</p>
+<p class="text-3xl font-bold mt-1">23</p>
+</div>
+</div>
+<!-- Technical List Table Container -->
+<section class="bg-surface-container-lowest rounded-xl shadow-[0_32px_64px_-16px_rgba(42,52,57,0.04)] overflow-hidden">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low">
+<th class="px-8 py-5 text-[0.6875rem] font-bold text-on-surface-variant uppercase tracking-widest border-b border-surface-variant/20">Case Title</th>
+<th class="px-8 py-5 text-[0.6875rem] font-bold text-on-surface-variant uppercase tracking-widest border-b border-surface-variant/20">Client</th>
+<th class="px-8 py-5 text-[0.6875rem] font-bold text-on-surface-variant uppercase tracking-widest border-b border-surface-variant/20">Status</th>
+<th class="px-8 py-5 text-[0.6875rem] font-bold text-on-surface-variant uppercase tracking-widest border-b border-surface-variant/20">Date</th>
+<th class="px-8 py-5 text-[0.6875rem] font-bold text-on-surface-variant uppercase tracking-widest border-b border-surface-variant/20 text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-variant/10">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-container-low/30 transition-colors">
+<td class="px-8 py-6">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-lg bg-surface-container-highest flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="modern glass architectural building reflecting a bright blue sky with sharp angles and clean lines" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA1CLDBNGTYMJwd11d81A-Gniv1qfmIKXKHUIsHS7uzxPcZO_cWgv_OTcDUk-gcsZNonToe4FkuDfl3ryfdsoXdcY6_6dNeP8EVsurn6_80j7SwlulhLz9AIyLuvXDJzzKg7S6Bcv4bU9tmxkzUdyiZeuRBqeTtgNwaHpvU7AMU5Vn7_nM_DVpmEun8mr_hFstZZwk56UUAsoL6i5-p9H30jz44RLgtO88-sBQDNS8tQU-sVbC5GTVxJjM-EpfKBcR6G3BH4safUdQ9"/>
+</div>
+<span class="font-semibold text-on-surface text-sm">Quantum Infrastructure Audit</span>
+</div>
+</td>
+<td class="px-8 py-6 text-sm text-on-surface-variant">Nexus Tech Corp</td>
+<td class="px-8 py-6">
+<span class="px-3 py-1 bg-primary/10 text-primary text-[0.6875rem] font-bold rounded-full uppercase tracking-wider">Published</span>
+</td>
+<td class="px-8 py-6 text-sm text-on-surface-variant">Oct 24, 2023</td>
+<td class="px-8 py-6 text-right space-x-2">
+<button class="p-2 text-secondary hover:bg-surface-container-high rounded-lg transition-colors">
+<span class="material-symbols-outlined" data-icon="edit">edit</span>
+</button>
+<button class="p-2 text-error hover:bg-error/10 rounded-lg transition-colors">
+<span class="material-symbols-outlined" data-icon="delete">delete</span>
+</button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-container-low/30 transition-colors">
+<td class="px-8 py-6">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-lg bg-surface-container-highest flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="close-up of a high-tech circuit board with blue glowing lights and intricate microchip patterns" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAQlvRiiGhPkM6zgqQeQ9I2-17u12eoKMBGG0VX0vKRwcJgZkqjGD7l5gTfpe5juxRipmkGjDM_-7MkQWsnWZpIJwIAW5yP3EdPcjUgIjyhLV77M_YIYzdRLzfWxVj4wt6ilZgCu-taBJx7J0CbeFsFcNExrnhHB8BbEL90hEt4Vz4MGrmU7xTXY0iEcJYo7LXnj0atwdAoxqHngByMD-FykFYxMj8F2BZDTm9l_1XKxZSReCdUPFLg3YMm25MPWbHnA2NGAojyAVK8"/>
+</div>
+<span class="font-semibold text-on-surface text-sm">Automated Supply Ledger</span>
+</div>
+</td>
+<td class="px-8 py-6 text-sm text-on-surface-variant">Starlight Logistics</td>
+<td class="px-8 py-6">
+<span class="px-3 py-1 bg-surface-container-highest text-on-surface-variant text-[0.6875rem] font-bold rounded-full uppercase tracking-wider">Draft</span>
+</td>
+<td class="px-8 py-6 text-sm text-on-surface-variant">Nov 02, 2023</td>
+<td class="px-8 py-6 text-right space-x-2">
+<button class="p-2 text-secondary hover:bg-surface-container-high rounded-lg transition-colors">
+<span class="material-symbols-outlined" data-icon="edit">edit</span>
+</button>
+<button class="p-2 text-error hover:bg-error/10 rounded-lg transition-colors">
+<span class="material-symbols-outlined" data-icon="delete">delete</span>
+</button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-container-low/30 transition-colors">
+<td class="px-8 py-6">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-lg bg-surface-container-highest flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="abstract digital security representation with matrix of green and white binary code on a dark background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBfblo1C-N5KnpS7opyZmL6Ve2GuhWcF5vujCSv0sGDmfH77eCQgmWI5WVuApPtEZ0nXQmVHwK4cQyDX532iihO2vSKs0eojWn7nEljTNJ9bG7u6JtC_mQgzDpBCyt9oBbFtQVufcT81e8kIOosSsVni8dKHD-fuHE3s6gR6fLAvm9Q_hlAYx42QFq1QBb0q4wvP_GL_JdE9yLVw1QpsbXgC94RHQR9FyM37FKYgvWAr6QekNfb4p-q-zfUW7AX-69wRkMRStf8BAD8"/>
+</div>
+<span class="font-semibold text-on-surface text-sm">Security Protocol V4</span>
+</div>
+</td>
+<td class="px-8 py-6 text-sm text-on-surface-variant">GovAlpha Defense</td>
+<td class="px-8 py-6">
+<span class="px-3 py-1 bg-primary/10 text-primary text-[0.6875rem] font-bold rounded-full uppercase tracking-wider">Published</span>
+</td>
+<td class="px-8 py-6 text-sm text-on-surface-variant">Sep 15, 2023</td>
+<td class="px-8 py-6 text-right space-x-2">
+<button class="p-2 text-secondary hover:bg-surface-container-high rounded-lg transition-colors">
+<span class="material-symbols-outlined" data-icon="edit">edit</span>
+</button>
+<button class="p-2 text-error hover:bg-error/10 rounded-lg transition-colors">
+<span class="material-symbols-outlined" data-icon="delete">delete</span>
+</button>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-surface-container-low/30 transition-colors">
+<td class="px-8 py-6">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-lg bg-surface-container-highest flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="macro photograph of gold electrical connections on a dark motherboard surface with shallow depth of field" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBx0Ls82NCgpm8Uvvy0_mMWE495HVaQ6mzBVPvOVycuBA-y4EpdVCBiaBrceWnZJHSN3UEnwduN1S_lYq8jRfocfyhWdB4Ve77gI0RVK0lVpeiVYVkkX5qYL5YYSLmoS8QZs4VHs3-C99Dzx_vWjVLDQwZIV_ht70btI5-A0Xam-W_vuSWQhfqcF-tYBzg59UUtrvKxTQPbAxYXTlCbqt58dBMmSfoyc_NWg2zQ_uOvwoP94BpztC3-mkMafoqT_Qkzfuk2tpMjTuOE"/>
+</div>
+<span class="font-semibold text-on-surface text-sm">Legacy Migration Strategy</span>
+</div>
+</td>
+<td class="px-8 py-6 text-sm text-on-surface-variant">OldGuard Finance</td>
+<td class="px-8 py-6">
+<span class="px-3 py-1 bg-outline-variant/30 text-outline text-[0.6875rem] font-bold rounded-full uppercase tracking-wider">Archived</span>
+</td>
+<td class="px-8 py-6 text-sm text-on-surface-variant">Jun 10, 2023</td>
+<td class="px-8 py-6 text-right space-x-2">
+<button class="p-2 text-secondary hover:bg-surface-container-high rounded-lg transition-colors">
+<span class="material-symbols-outlined" data-icon="edit">edit</span>
+</button>
+<button class="p-2 text-error hover:bg-error/10 rounded-lg transition-colors">
+<span class="material-symbols-outlined" data-icon="delete">delete</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination / Footer -->
+<div class="px-8 py-5 flex items-center justify-between bg-surface-container-low/50">
+<p class="text-[0.6875rem] font-bold text-on-surface-variant uppercase tracking-widest">Showing 4 of 124 Cases</p>
+<div class="flex gap-2">
+<button class="px-4 py-2 bg-surface-container-highest text-on-surface-variant text-sm font-medium rounded-lg hover:bg-surface-container-high transition-all">Previous</button>
+<button class="px-4 py-2 bg-primary text-on-primary text-sm font-medium rounded-lg hover:opacity-90 transition-all">Next</button>
+</div>
+</div>
+</section>
+</div>
+</main>
+</body></html>

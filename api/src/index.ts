@@ -1,0 +1,28 @@
+import { Hono } from 'hono'
+import { cors } from 'hono/cors'
+import type { AppBindings } from './types.js'
+import { authRouter } from './routes/auth.js'
+import { publicRouter } from './routes/public.js'
+import { caseStudiesRouter } from './routes/caseStudies.js'
+
+const app = new Hono<{ Bindings: AppBindings }>()
+
+// Dynamic CORS — reads origins from env so dev and prod both work
+app.use('*', async (c, next) => {
+  const allowed = [c.env.FRONTEND_ORIGIN, c.env.BACKOFFICE_ORIGIN].filter(Boolean)
+  return cors({
+    origin: allowed.length > 0 ? allowed : ['*'],
+    credentials: true
+  })(c, next)
+})
+
+app.route('/api/auth', authRouter)
+app.route('/api/public', publicRouter)
+app.route('/api/case-studies', caseStudiesRouter)
+
+app.get('/api/health', (c) =>
+  c.json({ status: 'ok', timestamp: new Date().toISOString() })
+)
+
+export default app
+

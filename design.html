@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ARCH/SOLUTIONS | Senior AWS Solutions Architect</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=Space+Grotesk:wght@300;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              colors: {
+                "surface-dim": "#161311",
+                "on-surface": "#e9e1dd",
+                "surface-container-lowest": "#100e0c",
+                "on-error": "#690005",
+                "surface-bright": "#3c3836",
+                "secondary": "#cec5bf",
+                "error-container": "#93000a",
+                "on-tertiary": "#412c10",
+                "primary-fixed-dim": "#b9c8de",
+                "background": "#161311",
+                "on-primary": "#233143",
+                "outline": "#8e9197",
+                "surface-variant": "#383432",
+                "surface-container": "#221f1d",
+                "on-tertiary-fixed": "#2a1801",
+                "inverse-primary": "#516072",
+                "on-secondary-fixed-variant": "#4b4641",
+                "secondary-fixed": "#eae1da",
+                "error": "#ffb4ab",
+                "on-background": "#e9e1dd",
+                "on-surface-variant": "#c4c6cd",
+                "tertiary-fixed": "#ffddb6",
+                "on-error-container": "#ffdad6",
+                "on-primary-container": "#f9f9ff",
+                "secondary-container": "#4b4641",
+                "on-secondary-container": "#bcb3ae",
+                "surface": "#161311",
+                "tertiary-container": "#8a6e4c",
+                "tertiary-fixed-dim": "#e3c199",
+                "secondary-fixed-dim": "#cec5bf",
+                "surface-container-high": "#2d2927",
+                "inverse-on-surface": "#33302d",
+                "on-tertiary-container": "#fff9f5",
+                "primary-container": "#657488",
+                "on-primary-fixed": "#0d1c2d",
+                "on-tertiary-fixed-variant": "#5a4224",
+                "surface-container-low": "#1e1b19",
+                "on-secondary": "#342f2b",
+                "tertiary": "#e3c199",
+                "primary-fixed": "#d4e4fa",
+                "surface-container-highest": "#383432",
+                "on-secondary-fixed": "#1f1b17",
+                "primary": "#b9c8de",
+                "surface-tint": "#b9c8de",
+                "inverse-surface": "#e9e1dd",
+                "on-primary-fixed-variant": "#39485a",
+                "outline-variant": "#44474c"
+              },
+              fontFamily: {
+                "headline": ["Space Grotesk"],
+                "body": ["Inter"],
+                "label": ["Inter"]
+              },
+              borderRadius: {"DEFAULT": "4px", "sm": "4px", "lg": "4px", "xl": "4px", "full": "9999px"},
+            },
+          },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3 { font-family: 'Space Grotesk', sans-serif; }
+        .blueprint-grid {
+            background-image: radial-gradient(circle, #2d2927 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-stone-950/80 backdrop-blur-md border-b border-stone-800/20">
+<div class="flex justify-between items-center max-w-7xl mx-auto px-8 h-20">
+<div class="text-xl font-bold tracking-tighter text-slate-100">ARCH/SOLUTIONS</div>
+<!-- Desktop Links -->
+<div class="hidden md:flex items-center space-x-12">
+<a class="text-slate-100 border-b-2 border-slate-400 pb-1 text-[0.75rem] tracking-widest uppercase font-medium" href="#profile">Profile</a>
+<a class="text-stone-400 hover:text-slate-200 transition-colors text-[0.75rem] tracking-widest uppercase font-medium" href="#skills">Skills</a>
+<a class="text-stone-400 hover:text-slate-200 transition-colors text-[0.75rem] tracking-widest uppercase font-medium" href="#portfolio">Portfolio</a>
+<a class="text-stone-400 hover:text-slate-200 transition-colors text-[0.75rem] tracking-widest uppercase font-medium" href="#contact">Contact</a>
+</div>
+<button class="bg-primary text-on-primary px-6 py-2 text-[0.75rem] tracking-widest uppercase font-bold hover:bg-primary-fixed-dim transition-all duration-300 rounded-[4px]">
+                Get in Touch
+            </button>
+</div>
+</nav>
+<main class="pt-20">
+<!-- Hero Section -->
+<section class="relative min-h-[921px] flex flex-col justify-center px-8 max-w-7xl mx-auto blueprint-grid" id="profile">
+<div class="grid grid-cols-12 gap-8 items-center">
+<div class="col-span-12 lg:col-span-8">
+<span class="inline-block text-primary tracking-[0.2em] text-[10px] uppercase mb-6 font-semibold">Senior Solutions Architect // AWS Certified</span>
+<h1 class="text-5xl md:text-7xl lg:text-8xl font-bold leading-[0.9] tracking-tighter text-on-surface mb-8">
+                        ARCH/SOLUTIONS: ARCHITECTING SCALABLE CLOUD SOLUTIONS ON AWS.
+                    </h1>
+<p class="text-xl text-on-surface-variant max-w-2xl font-light leading-relaxed mb-12">
+                        A senior solutions architect with a focus on high-performance architectures, cost optimization, and security. Engineering digital foundations that scale with precision.
+                    </p>
+<div class="flex flex-wrap gap-4">
+<button class="bg-primary text-on-primary px-10 py-4 font-bold text-sm tracking-widest uppercase flex items-center gap-3 group rounded-[4px]">
+                            Explore Projects
+                            <span class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+<button class="border border-outline-variant/20 text-on-surface px-10 py-4 font-bold text-sm tracking-widest uppercase hover:bg-surface-container-high transition-all rounded-[4px]">
+                            Download CV
+                        </button>
+</div>
+</div>
+</div>
+<!-- Technical Metadata Decoration -->
+<div class="absolute bottom-12 right-8 hidden lg:block text-right">
+<div class="font-mono text-[10px] text-stone-500 space-y-1">
+<p>REGION: US-EAST-1</p>
+<p>STACK: AWS_CLOUD_NATIVE</p>
+<p>UPTIME: 99.99%</p>
+</div>
+</div>
+</section>
+<!-- About & Skills Section -->
+<section class="bg-surface-container-lowest py-24 px-8 border-t border-stone-900" id="skills">
+<div class="max-w-7xl mx-auto">
+<div class="grid grid-cols-12 gap-12">
+<div class="col-span-12 lg:col-span-4">
+<h2 class="text-3xl font-bold tracking-tight mb-6">TECHNICAL SUMMARY</h2>
+<p class="text-on-surface-variant leading-relaxed">
+                            Specializing in the design and implementation of resilient, secure, and cost-effective cloud infrastructures. My approach prioritizes serverless computing to reduce operational overhead and multi-region strategies to ensure global availability and compliance.
+                        </p>
+</div>
+<div class="col-span-12 lg:col-span-8">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-1">
+<!-- Skill Block -->
+<div class="bg-surface p-8 border border-outline-variant/10 rounded-[4px]">
+<span class="material-symbols-outlined text-primary mb-4" data-icon="terminal">terminal</span>
+<h3 class="text-[10px] uppercase tracking-widest font-bold text-stone-500 mb-4">Compute &amp; Serverless</h3>
+<ul class="space-y-2 text-sm">
+<li class="flex justify-between"><span>AWS Lambda</span><span class="text-primary/50">PRO</span></li>
+<li class="flex justify-between"><span>Fargate</span><span class="text-primary/50">ADV</span></li>
+<li class="flex justify-between"><span>EC2 Auto-scaling</span><span class="text-primary/50">PRO</span></li>
+</ul>
+</div>
+<!-- Skill Block -->
+<div class="bg-surface p-8 border border-outline-variant/10 rounded-[4px]">
+<span class="material-symbols-outlined text-primary mb-4" data-icon="database">database</span>
+<h3 class="text-[10px] uppercase tracking-widest font-bold text-stone-500 mb-4">Storage &amp; Databases</h3>
+<ul class="space-y-2 text-sm">
+<li class="flex justify-between"><span>Amazon RDS</span><span class="text-primary/50">PRO</span></li>
+<li class="flex justify-between"><span>DynamoDB</span><span class="text-primary/50">PRO</span></li>
+<li class="flex justify-between"><span>Amazon S3</span><span class="text-primary/50">PRO</span></li>
+</ul>
+</div>
+<!-- Skill Block -->
+<div class="bg-surface p-8 border border-outline-variant/10 rounded-[4px]">
+<span class="material-symbols-outlined text-primary mb-4" data-icon="shield">shield</span>
+<h3 class="text-[10px] uppercase tracking-widest font-bold text-stone-500 mb-4">Networking &amp; Security</h3>
+<ul class="space-y-2 text-sm">
+<li class="flex justify-between"><span>VPC / PrivateLink</span><span class="text-primary/50">ADV</span></li>
+<li class="flex justify-between"><span>CloudFront</span><span class="text-primary/50">ADV</span></li>
+<li class="flex justify-between"><span>IAM &amp; KMS</span><span class="text-primary/50">PRO</span></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Portfolio Section -->
+<section class="py-24 px-8 max-w-7xl mx-auto" id="portfolio">
+<div class="flex justify-between items-end mb-16">
+<div>
+<h2 class="text-5xl font-bold tracking-tighter mb-4">SELECTED ARCHITECTURES</h2>
+<p class="text-stone-500 uppercase tracking-widest text-[10px]">Case Studies / Engineering Records</p>
+</div>
+<div class="hidden md:block w-32 h-[1px] bg-outline-variant mb-4"></div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+<!-- Project 1 -->
+<article class="group relative bg-surface-container border border-outline-variant/5 overflow-hidden rounded-[4px]">
+<div class="aspect-[16/10] bg-surface-container-lowest relative overflow-hidden">
+<img alt="Architecture Diagram" class="w-full h-full object-cover opacity-30 grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" data-alt="Technical blueprint style diagram of a cloud network infrastructure with icons for servers and security layers on a dark background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDqWutJ1Nkuxe_lqyc4N5oyCuCfOagBmC8X9L7K1s6d71ZGSOA7VytIgmID5r-i-D0nXBuFZaZDdk9BxFSmVg1IDVtykCCKGDX9SfvZ_6NCANMvE6jAsurTSylXdWV5g_lpYJLxz7Rbtk4zq660lYsAE4wK7QiblPU7EGW6RFZbjone-_G8Qu-Im6byd8A4pXogg3jUx5MaWYOAChSjQT6hxoXwA0q_1DYke4rE37QF4XGaz52Ss5CYZOxAmiGZ5e_HCgJoxPyi2YE"/>
+<div class="absolute inset-0 flex items-center justify-center">
+<span class="text-[10px] tracking-[0.5em] text-stone-600 font-mono">SPEC_NO: 0882-DR</span>
+</div>
+</div>
+<div class="p-12">
+<h3 class="text-2xl font-bold mb-4">Multi-Region Disaster Recovery Architecture for Financial Services</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed mb-8">
+                            Engineered a high-availability solution with RPO &lt; 5 minutes and RTO &lt; 15 minutes across three AWS regions using Aurora Global Databases and Route 53 Health Checks.
+                        </p>
+<div class="flex gap-3 flex-wrap">
+<span class="px-3 py-1 bg-surface-container-high text-[10px] font-mono border border-outline-variant/20 uppercase rounded-[4px]">Aurora</span>
+<span class="px-3 py-1 bg-surface-container-high text-[10px] font-mono border border-outline-variant/20 uppercase rounded-[4px]">Route 53</span>
+<span class="px-3 py-1 bg-surface-container-high text-[10px] font-mono border border-outline-variant/20 uppercase rounded-[4px]">CloudFormation</span>
+</div>
+</div>
+</article>
+<!-- Project 2 -->
+<article class="group relative bg-surface-container border border-outline-variant/5 overflow-hidden rounded-[4px]">
+<div class="aspect-[16/10] bg-surface-container-lowest relative overflow-hidden">
+<img alt="Serverless System Diagram" class="w-full h-full object-cover opacity-30 grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" data-alt="Abstract visualization of digital data nodes connecting in a complex network with glowing blue points and lines on a dark void" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCxIVgH-_YrBQwhyFzO-A9qm5B9Mht64eRcfJHrwGTgkeG9BfCVsAAwEjRFur8VFj2-HXWMch1PHhG0tO4ix5ErDDhZ7sF2aN_xntHG-OX17JrbEaH3s0kiEaUOaLUXZ4jFMNquczoy8gTo8mcMP6TElrxCC0bbW_-EKdC8Rf_my3S-FLgXRyriYfElxu5iOP0ofAI4JOq6vqzW1XXcdZ0ah2yPqzZHiXPm7L7eBu0GylJPByQrkOPgNPSLdnPShmmEaWJJ8OJBsK0"/>
+<div class="absolute inset-0 flex items-center justify-center">
+<span class="text-[10px] tracking-[0.5em] text-stone-600 font-mono">SPEC_NO: 1042-SVR</span>
+</div>
+</div>
+<div class="p-12">
+<h3 class="text-2xl font-bold mb-4">Auto-Scaling Serverless API for Real-Time Data Processing</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed mb-8">
+                            Implemented a globally distributed API handling 50k+ requests per second at peak. Utilized API Gateway, Lambda, and Kinesis Data Streams for sub-second latency processing.
+                        </p>
+<div class="flex gap-3 flex-wrap">
+<span class="px-3 py-1 bg-surface-container-high text-[10px] font-mono border border-outline-variant/20 uppercase rounded-[4px]">API Gateway</span>
+<span class="px-3 py-1 bg-surface-container-high text-[10px] font-mono border border-outline-variant/20 uppercase rounded-[4px]">Kinesis</span>
+<span class="px-3 py-1 bg-surface-container-high text-[10px] font-mono border border-outline-variant/20 uppercase rounded-[4px]">EventBridge</span>
+</div>
+</div>
+</article>
+</div>
+</section>
+<!-- Contact Section -->
+<section class="bg-surface-container-low py-32 px-8" id="contact">
+<div class="max-w-7xl mx-auto grid grid-cols-12 gap-8">
+<div class="col-span-12 lg:col-span-6">
+<h2 class="text-5xl font-bold tracking-tighter mb-8">START THE ARCHITECTURAL PHASE</h2>
+<p class="text-on-surface-variant text-lg max-w-md mb-12">
+                        Ready to optimize your cloud footprint? Let's discuss your next infrastructure challenge.
+                    </p>
+<div class="flex flex-col space-y-4">
+<a class="text-2xl font-light hover:text-primary transition-colors underline underline-offset-8 decoration-stone-700" href="mailto:architect@archsolutions.com">architect@archsolutions.com</a>
+<div class="flex space-x-8 pt-4">
+<a class="text-[10px] uppercase tracking-widest font-bold text-stone-400 hover:text-on-surface transition-colors flex items-center gap-2" href="#">
+<span class="material-symbols-outlined text-sm">link</span> LinkedIn
+                            </a>
+<a class="text-[10px] uppercase tracking-widest font-bold text-stone-400 hover:text-on-surface transition-colors flex items-center gap-2" href="#">
+<span class="material-symbols-outlined text-sm">terminal</span> GitHub
+                            </a>
+</div>
+</div>
+</div>
+<div class="col-span-12 lg:col-span-6 mt-12 lg:mt-0">
+<form class="space-y-8">
+<div class="group relative">
+<label class="text-[10px] uppercase tracking-widest font-bold text-stone-500 block mb-2">Project Brief</label>
+<input class="w-full bg-transparent border-0 border-b-2 border-outline-variant py-4 px-0 focus:ring-0 focus:border-primary transition-colors placeholder:text-stone-700 rounded-t-[4px]" placeholder="Your Name" type="text"/>
+</div>
+<div class="group relative">
+<input class="w-full bg-transparent border-0 border-b-2 border-outline-variant py-4 px-0 focus:ring-0 focus:border-primary transition-colors placeholder:text-stone-700 rounded-t-[4px]" placeholder="Email Address" type="email"/>
+</div>
+<div class="group relative">
+<textarea class="w-full bg-transparent border-0 border-b-2 border-outline-variant py-4 px-0 focus:ring-0 focus:border-primary transition-colors placeholder:text-stone-700 resize-none rounded-t-[4px]" placeholder="Technical Requirements / Scope" rows="4"></textarea>
+</div>
+<button class="bg-primary text-on-primary w-full py-6 font-bold text-sm tracking-widest uppercase hover:bg-primary-fixed-dim transition-all rounded-[4px]" type="submit">
+                            Initialize Inquiry
+                        </button>
+</form>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-stone-950 border-t border-stone-900">
+<div class="flex flex-col md:flex-row justify-between items-center py-12 px-8 max-w-7xl mx-auto">
+<div class="mb-8 md:mb-0">
+<div class="text-lg font-bold text-stone-100 mb-2">ARCH/SOLUTIONS</div>
+<p class="text-[10px] uppercase tracking-[0.05em] text-stone-500">© 2024 SOLUTIONS ARCHITECT. ENGINEERED PRECISION.</p>
+</div>
+<div class="flex flex-wrap justify-center gap-8">
+<a class="text-stone-500 hover:text-slate-300 transition-colors text-[10px] uppercase tracking-[0.05em] font-medium" href="#">LinkedIn</a>
+<a class="text-stone-500 hover:text-slate-300 transition-colors text-[10px] uppercase tracking-[0.05em] font-medium" href="#">GitHub</a>
+<a class="text-stone-500 hover:text-slate-300 transition-colors text-[10px] uppercase tracking-[0.05em] font-medium" href="#">AWS Certified</a>
+<a class="text-stone-500 hover:text-slate-300 transition-colors text-[10px] uppercase tracking-[0.05em] font-medium" href="#">Status</a>
+</div>
+</div>
+</footer>
+</body></html>

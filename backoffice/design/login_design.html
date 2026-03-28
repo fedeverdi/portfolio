@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+
+<html class="light" lang="it"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TechCurator | Admin Login</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-container-high": "#ffffff",
+              "on-background": "#1e293b",
+              "secondary-dim": "#64748b",
+              "error": "#ef4444",
+              "outline-variant": "#e2e8f0",
+              "inverse-on-surface": "#f8fafc",
+              "on-error": "#ffffff",
+              "background": "#f8fafc",
+              "surface-container-low": "#f1f5f9",
+              "on-surface": "#0f172a",
+              "surface-dim": "#f8fafc",
+              "primary": "#64748b",
+              "on-primary": "#ffffff",
+              "secondary": "#475569",
+              "surface": "#ffffff",
+            },
+            fontFamily: {
+              "headline": ["Inter"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {
+              "DEFAULT": "0.125rem",
+              "lg": "0.25rem",
+              "xl": "0.5rem",
+              "2xl": "1rem",
+              "full": "9999px"
+            },
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #f8fafc;
+            color: #0f172a;
+            font-family: 'Inter', sans-serif;
+        }
+        .login-card {
+            background-color: #f1f5f9;
+            color: #0f172a;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex items-center justify-center p-6 bg-slate-50">
+<!-- Background Decoration -->
+<div class="fixed inset-0 overflow-hidden pointer-events-none">
+<div class="absolute -top-[10%] -left-[10%] w-[40%] h-[40%] bg-slate-200/50 rounded-full blur-[120px]"></div>
+<div class="absolute -bottom-[10%] -right-[10%] w-[40%] h-[40%] bg-slate-200/50 rounded-full blur-[120px]"></div>
+</div>
+<!-- Login Container -->
+<main class="w-full max-w-md z-10">
+<!-- Brand Logo & Header -->
+<div class="text-center mb-10">
+<div class="inline-flex items-center justify-center w-14 h-14 mb-4 rounded-2xl bg-white border border-slate-200 shadow-sm">
+<span class="material-symbols-outlined text-[#64748b] text-3xl" data-icon="terminal">terminal</span>
+</div>
+<h1 class="text-2xl font-bold tracking-tighter text-slate-900 headline-sm">TechCurator</h1>
+<p class="text-sm text-slate-500 mt-1 label-md">Admin Console v2.4</p>
+</div>
+<!-- Login Form Panel -->
+<div class="login-card p-10 rounded-2xl shadow-xl border border-slate-200">
+<form action="#" class="space-y-6" method="POST">
+<!-- Email Field -->
+<div class="space-y-2">
+<label class="block text-[10px] font-bold uppercase tracking-widest text-slate-600 label-md" for="email">
+                    Email Address
+                </label>
+<div class="relative group">
+<div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-slate-500 text-sm" data-icon="alternate_email">alternate_email</span>
+</div>
+<input class="block w-full pl-11 pr-4 py-3.5 bg-white border border-slate-300 rounded-xl text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#64748b]/20 focus:border-[#64748b] transition-all duration-200 text-sm" id="email" name="email" placeholder="admin@techcurator.io" required="" type="email"/>
+</div>
+</div>
+<!-- Password Field -->
+<div class="space-y-2">
+<div class="flex items-center justify-between">
+<label class="block text-[10px] font-bold uppercase tracking-widest text-slate-600 label-md" for="password">
+                        Security Key
+                    </label>
+<a class="text-[10px] uppercase font-bold hover:text-slate-300 transition-colors tracking-tighter text-slate-500 hover:text-slate-900" href="#">
+                        Forgot Key?
+                    </a>
+</div>
+<div class="relative group">
+<div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-slate-500 text-sm" data-icon="lock">lock</span>
+</div>
+<input class="block w-full pl-11 pr-4 py-3.5 bg-white border border-slate-300 rounded-xl text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#64748b]/20 focus:border-[#64748b] transition-all duration-200 text-sm" id="password" name="password" placeholder="••••••••••••" required="" type="password"/>
+</div>
+</div>
+<!-- Login Options -->
+<div class="flex items-center">
+<input class="h-4 w-4 rounded border-slate-300 bg-white text-[#64748b] focus:ring-[#64748b]/50 focus:ring-offset-white" id="remember-me" name="remember-me" type="checkbox"/>
+<label class="ml-2 block text-xs text-slate-600 label-md" for="remember-me">
+                    Remember terminal session
+                </label>
+</div>
+<!-- Action Button -->
+<button class="w-full flex justify-center items-center py-4 px-4 bg-[#64748b] text-white font-bold rounded-xl hover:bg-[#475569] active:scale-[0.98] transition-all duration-150 shadow-lg shadow-black/20" type="submit">
+<span class="text-xs uppercase tracking-widest mr-2">Authenticate</span>
+<span class="material-symbols-outlined text-sm" data-icon="login">login</span>
+</button>
+</form>
+<!-- Metadata Footer -->
+<div class="mt-8 pt-6 border-t border-slate-200 flex items-center justify-between">
+<div class="flex items-center space-x-2">
+<div class="w-2 h-2 rounded-full bg-emerald-500"></div>
+<span class="text-[10px] font-mono text-slate-600 uppercase tracking-tight">System Online</span>
+</div>
+<div class="text-[10px] font-mono text-slate-600 uppercase tracking-tight">
+                SEC_ZONE: 4-B
+            </div>
+</div>
+</div>
+<!-- System Status Bar -->
+<div class="mt-8 flex justify-center gap-8">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-slate-400 text-xs" data-icon="security">security</span>
+<span class="text-[10px] uppercase font-bold text-slate-400 tracking-widest">Encrypted</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-slate-400 text-xs" data-icon="cloud_done">cloud_done</span>
+<span class="text-[10px] uppercase font-bold text-slate-400 tracking-widest">Verified</span>
+</div>
+</div>
+</main>
+<!-- Visual Polish: Noise Texture -->
+<div class="fixed inset-0 pointer-events-none opacity-[0.015] bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]"></div>
+</body></html>

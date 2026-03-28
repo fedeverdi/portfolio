@@ -1,0 +1,15 @@
+{
+  "name": "myportfolio",
+  "private": true,
+  "scripts": {
+    "dev": "concurrently --names \"API,FRONT,BO\" --prefix-colors \"cyan,magenta,yellow\" \"npm run dev --prefix api\" \"npm run dev --prefix frontend\" \"npm run dev --prefix backoffice\"",
+    "dev:api": "npm run dev --prefix api",
+    "dev:frontend": "npm run dev --prefix frontend",
+    "dev:backoffice": "npm run dev --prefix backoffice",
+    "build": "concurrently \"npm run build --prefix api\" \"npm run build --prefix frontend\" \"npm run build --prefix backoffice\"",
+    "install:all": "npm install --prefix api && npm install --prefix frontend && npm install --prefix backoffice"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
