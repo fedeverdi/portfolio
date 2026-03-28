@@ -4,7 +4,7 @@ compatibility_date = "2024-11-01"
 compatibility_flags = ["nodejs_compat"]
 
 [[d1_databases]]
-binding = "myportfolio_db"
+binding = "DB"
 database_name = "myportfolio-db"
 database_id = "4b6920d6-7dcd-46b0-b1ff-2c2899e7d072"
 
