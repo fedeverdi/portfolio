@@ -20,6 +20,10 @@ app.route('/api/auth', authRouter)
 app.route('/api/public', publicRouter)
 app.route('/api/case-studies', caseStudiesRouter)
 
+app.get('/robots.txt', (c) =>
+  c.text('User-agent: *\nDisallow: /\n', 200, { 'Content-Type': 'text/plain' })
+)
+
 app.get('/api/health', (c) =>
   c.json({ status: 'ok', timestamp: new Date().toISOString() })
 )
