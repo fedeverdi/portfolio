@@ -14,19 +14,20 @@ const submitted = ref(false)
 const loading = ref(false)
 const error = ref('')
 const turnstileToken = ref('')
-
-declare global {
-  interface Window { turnstile?: { reset: (el: HTMLElement) => void } }
-}
 const turnstileEl = ref<HTMLElement | null>(null)
 
-function onTurnstileCallback(token: string) {
-  turnstileToken.value = token
+declare global {
+  interface Window {
+    turnstile?: { reset: (el: HTMLElement) => void }
+    __turnstileCallback?: (token: string) => void
+  }
 }
 
-if (import.meta.client) {
-  ;(window as unknown as Record<string, unknown>).__turnstileCallback = onTurnstileCallback
-}
+onMounted(() => {
+  window.__turnstileCallback = (token: string) => {
+    turnstileToken.value = token
+  }
+})
 
 async function handleSubmit() {
   if (!turnstileToken.value) {
@@ -47,8 +48,7 @@ async function handleSubmit() {
     turnstileToken.value = ''
   } catch {
     error.value = 'Something went wrong. Please try again.'
-    // Reset widget so user can try again
-    if (import.meta.client && window.turnstile && turnstileEl.value) {
+    if (window.turnstile && turnstileEl.value) {
       window.turnstile.reset(turnstileEl.value)
     }
     turnstileToken.value = ''
