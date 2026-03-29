@@ -57,9 +57,13 @@ export const useAuthStore = defineStore('auth', () => {
       : {}
   }
 
-  // Wrapper centralizzato: redirige al login su 401
+  // Wrapper centralizzato: prepend API_BASE, aggiunge auth headers, redirige al login su 401
   async function apiFetch(input: RequestInfo, init?: RequestInit): Promise<Response> {
-    const res = await fetch(input, init)
+    const url = typeof input === 'string' && input.startsWith('/')
+      ? `${API_BASE}${input}`
+      : input
+    const headers = { ...authHeaders(), ...(init?.headers ?? {}) }
+    const res = await fetch(url, { ...init, headers })
     if (res.status === 401) {
       logout()
       throw new Error('Session expired')
