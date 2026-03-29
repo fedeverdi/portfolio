@@ -9,8 +9,15 @@ const scrollLinks = [
 const activeSection = ref('profile')
 const menuOpen = ref(false)
 
+const router = useRouter()
+
 function scrollTo(href: string) {
   menuOpen.value = false
+  if (route.path !== '/') {
+    router.push(`/${href}`)
+    return
+  }
+  router.replace({ hash: href })
   const el = document.querySelector(href)
   el?.scrollIntoView({ behavior: 'smooth' })
 }
@@ -30,6 +37,8 @@ onMounted(() => {
     const el = document.querySelector(href)
     if (el) observer.observe(el)
   })
+  const contactEl = document.querySelector('#contact')
+  if (contactEl) observer.observe(contactEl)
 })
 </script>
 
@@ -48,7 +57,7 @@ onMounted(() => {
           :key="link.href"
           :href="link.href"
           class="text-[0.75rem] tracking-widest uppercase font-medium transition-colors"
-          :class="activeSection === link.href.slice(1)
+          :class="route.path === '/' && activeSection === link.href.slice(1)
             ? 'text-slate-100 border-b-2 border-slate-400 pb-1'
             : 'text-stone-400 hover:text-slate-200'"
           @click.prevent="scrollTo(link.href)"
@@ -65,9 +74,9 @@ onMounted(() => {
           Portfolio
         </NuxtLink>
         <a
-          href="#contact"
+          href="/#contact"
           class="text-[0.75rem] tracking-widest uppercase font-medium transition-colors"
-          :class="activeSection === 'contact'
+          :class="route.path === '/' && activeSection === 'contact'
             ? 'text-slate-100 border-b-2 border-slate-400 pb-1'
             : 'text-stone-400 hover:text-slate-200'"
           @click.prevent="scrollTo('#contact')"
@@ -116,7 +125,7 @@ onMounted(() => {
           Portfolio
         </NuxtLink>
         <a
-          href="#contact"
+          href="/#contact"
           class="text-[0.75rem] tracking-widest uppercase font-medium text-stone-300 hover:text-white transition-colors"
           @click.prevent="scrollTo('#contact')"
         >Contact</a>
