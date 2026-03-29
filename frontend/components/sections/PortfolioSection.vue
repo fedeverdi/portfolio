@@ -17,7 +17,7 @@ const { data, status } = await useFetch<CaseStudy[]>(
   { server: true, default: () => [] }
 )
 
-const projects = computed(() => data.value ?? [])
+const projects = computed(() => (data.value ?? []).slice(0, 4))
 
 function specNo(index: number) {
   return `SPEC_NO: ${String(index + 1).padStart(4, '0')}`
@@ -35,7 +35,13 @@ function specNo(index: number) {
           Case Studies / Engineering Records
         </p>
       </div>
-      <div class="hidden md:block w-32 h-[1px] bg-outline-variant mb-4" />
+      <NuxtLink
+        to="/portfolio"
+        class="hidden md:flex items-center gap-2 text-[10px] uppercase tracking-widest font-bold text-stone-500 hover:text-on-surface transition-colors mb-4"
+      >
+        View all
+        <span class="material-symbols-outlined text-sm">arrow_forward</span>
+      </NuxtLink>
     </div>
 
     <!-- Loading state -->
@@ -98,6 +104,17 @@ function specNo(index: number) {
             <span class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">arrow_forward</span>
           </div>
         </div>
+      </NuxtLink>
+    </div>
+
+    <!-- Mobile: view all link -->
+    <div class="mt-12 flex md:hidden justify-center">
+      <NuxtLink
+        to="/portfolio"
+        class="flex items-center gap-2 text-[10px] uppercase tracking-widest font-bold text-stone-500 hover:text-on-surface transition-colors"
+      >
+        View all projects
+        <span class="material-symbols-outlined text-sm">arrow_forward</span>
       </NuxtLink>
     </div>
   </section>
