@@ -20,9 +20,9 @@ const statCards = () => {
 </script>
 
 <template>
-  <div class="p-12">
+  <div class="p-4 md:p-8 lg:p-12">
     <!-- Page header -->
-    <div class="flex justify-between items-end mb-8">
+    <div class="flex flex-col md:flex-row md:items-end gap-4 justify-between mb-8">
       <div>
         <h2 class="text-2xl font-bold tracking-tight text-on-surface">System Overview</h2>
         <p class="text-on-surface-variant text-sm mt-1">Real-time case study metrics and status.</p>

@@ -66,7 +66,7 @@ async function save() {
 </script>
 
 <template>
-  <div class="pb-16 px-12 min-h-screen pt-10">
+  <div class="pb-16 px-4 md:px-8 lg:px-12 min-h-screen pt-10">
     <!-- Breadcrumbs & header -->
     <div class="mb-12">
       <nav class="flex items-center gap-2 text-[0.6875rem] font-label uppercase tracking-wider text-on-surface-variant mb-4">
@@ -75,9 +75,9 @@ async function save() {
         <span class="text-primary font-bold">{{ isNew ? 'New Case Study' : 'Edit Case Study' }}</span>
       </nav>
 
-      <div class="flex justify-between items-end">
+      <div class="flex flex-col md:flex-row md:justify-between md:items-end gap-4">
         <div>
-          <h2 class="text-4xl font-bold tracking-tight text-on-surface mb-2">
+          <h2 class="text-2xl md:text-4xl font-bold tracking-tight text-on-surface mb-2">
             {{ isNew ? 'New Case Study' : 'Refining the Narrative' }}
           </h2>
           <p class="text-on-surface-variant text-sm max-w-xl">

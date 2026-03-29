@@ -33,7 +33,7 @@ function formatDate(iso: string) {
 </script>
 
 <template>
-  <div class="p-12">
+  <div class="p-4 md:p-8 lg:p-12">
     <!-- Header -->
     <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
       <div>
@@ -42,7 +42,7 @@ function formatDate(iso: string) {
           <span class="text-[0.6875rem] font-bold tracking-[0.1em] text-secondary uppercase">Inbox</span>
         </div>
         <div class="flex items-center gap-4">
-          <h2 class="text-[3.5rem] font-bold tracking-tighter leading-tight text-on-surface">Contacts</h2>
+          <h2 class="text-3xl md:text-[3.5rem] font-bold tracking-tighter leading-tight text-on-surface">Contacts</h2>
           <span
             v-if="store.unreadCount > 0"
             class="px-3 py-1 bg-primary text-on-primary rounded-full text-sm font-bold"

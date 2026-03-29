@@ -47,7 +47,7 @@ function sectionLabel(key: string) {
 </script>
 
 <template>
-  <div class="p-12">
+  <div class="p-4 md:p-8 lg:p-12">
     <!-- Header -->
     <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
       <div>
@@ -55,7 +55,7 @@ function sectionLabel(key: string) {
           <div class="w-2 h-2 rounded-full bg-primary" />
           <span class="text-[0.6875rem] font-bold tracking-[0.1em] text-secondary uppercase">Content</span>
         </div>
-        <h2 class="text-[3.5rem] font-bold tracking-tighter leading-tight text-on-surface">Texts</h2>
+        <h2 class="text-3xl md:text-[3.5rem] font-bold tracking-tighter leading-tight text-on-surface">Texts</h2>
         <p class="text-on-surface-variant max-w-md mt-4 leading-relaxed text-sm">
           Edit the frontend content. Changes take effect immediately.
         </p>

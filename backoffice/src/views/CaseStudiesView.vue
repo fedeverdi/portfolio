@@ -27,7 +27,7 @@ const stats = computed(() => store.stats())
 </script>
 
 <template>
-  <div class="p-12">
+  <div class="p-4 md:p-8 lg:p-12">
     <!-- Page header -->
     <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
       <div>
@@ -35,7 +35,7 @@ const stats = computed(() => store.stats())
           <div class="w-2 h-2 rounded-full bg-primary" />
           <span class="text-[0.6875rem] font-bold tracking-[0.1em] text-secondary uppercase">Database Alpha</span>
         </div>
-        <h2 class="text-[3.5rem] font-bold tracking-tighter leading-tight text-on-surface">Case Studies</h2>
+        <h2 class="text-3xl md:text-[3.5rem] font-bold tracking-tighter leading-tight text-on-surface">Case Studies</h2>
         <p class="text-on-surface-variant max-w-md mt-4 leading-relaxed text-sm">
           Gestisci la documentazione tecnica e i case study del portfolio.
         </p>

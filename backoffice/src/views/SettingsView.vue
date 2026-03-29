@@ -21,7 +21,7 @@ async function save() {
 </script>
 
 <template>
-  <div class="p-12">
+  <div class="p-4 md:p-8 lg:p-12">
     <!-- Header -->
     <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
       <div>
@@ -29,7 +29,7 @@ async function save() {
           <div class="w-2 h-2 rounded-full bg-primary" />
           <span class="text-[0.6875rem] font-bold tracking-[0.1em] text-secondary uppercase">Configuration</span>
         </div>
-        <h2 class="text-[3.5rem] font-bold tracking-tighter leading-tight text-on-surface">Settings</h2>
+        <h2 class="text-3xl md:text-[3.5rem] font-bold tracking-tighter leading-tight text-on-surface">Settings</h2>
         <p class="text-on-surface-variant max-w-md mt-4 leading-relaxed text-sm">
           Gestisci le impostazioni globali del portfolio.
         </p>
