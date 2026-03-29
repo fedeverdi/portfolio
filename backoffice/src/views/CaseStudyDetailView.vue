@@ -2,6 +2,7 @@
 import { ref, onMounted, computed } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { useCaseStudiesStore, type CaseStudy } from '@/stores/caseStudies'
+import ImageUpload from '@/components/ImageUpload.vue'
 
 const route = useRoute()
 const router = useRouter()
@@ -214,24 +215,7 @@ async function save() {
             <div class="w-1.5 h-1.5 rounded-full bg-outline" />
             <h3 class="font-semibold text-on-surface">Cover Image</h3>
           </div>
-          <input
-            v-model="form.coverImage"
-            type="url"
-            placeholder="https://..."
-            class="w-full bg-surface-container-low border border-surface-variant rounded-xl py-3 px-4 text-sm focus:ring-1 focus:ring-primary/20 focus:border-primary transition-all mb-4"
-          />
-          <div
-            v-if="form.coverImage"
-            class="aspect-video rounded-xl overflow-hidden bg-surface-container"
-          >
-            <img :src="form.coverImage" alt="Cover" class="w-full h-full object-cover" />
-          </div>
-          <div
-            v-else
-            class="aspect-video rounded-xl bg-surface-container flex items-center justify-center"
-          >
-            <span class="material-symbols-outlined text-4xl text-outline-variant">image</span>
-          </div>
+          <ImageUpload v-model="form.coverImage" />
         </section>
       </div>
     </div>

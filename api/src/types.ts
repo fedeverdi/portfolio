@@ -1,5 +1,6 @@
 export interface AppBindings {
   DB: D1Database
+  IMAGES_BUCKET: R2Bucket
   JWT_SECRET: string
   ADMIN_EMAIL: string
   ADMIN_PASSWORD: string
@@ -11,6 +12,7 @@ export interface AppBindings {
   FROM_EMAIL: string
   NOTIFY_EMAIL: string
   TURNSTILE_SECRET: string
+  IMAGES_PUBLIC_URL: string
 }
 
 export interface CaseStudy {

@@ -19,7 +19,7 @@ export default defineNuxtConfig({
           '/': { headers: { 'cache-control': 'public, s-maxage=31536000, max-age=0, must-revalidate' } },
           '/**': {
             headers: {
-              'content-security-policy': "default-src 'self'; script-src 'self' 'unsafe-inline' https://challenges.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob: https:; connect-src 'self' https://api-portfolio.federicoverdi.it https://challenges.cloudflare.com; frame-src https://challenges.cloudflare.com; worker-src blob:; object-src 'none'; base-uri 'self'",
+              'content-security-policy': "default-src 'self'; script-src 'self' 'unsafe-inline' https://challenges.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob: https://images.federicoverdi.it https:; connect-src 'self' https://api-portfolio.federicoverdi.it https://challenges.cloudflare.com; frame-src https://challenges.cloudflare.com; worker-src blob:; object-src 'none'; base-uri 'self'",
               'x-content-type-options': 'nosniff',
               'x-frame-options': 'DENY',
               'referrer-policy': 'strict-origin-when-cross-origin',

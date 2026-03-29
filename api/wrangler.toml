@@ -9,11 +9,16 @@ binding = "DB"
 database_name = "myportfolio-db"
 database_id = "673d66d8-1afc-451c-84fd-a0de2ca52110"
 
+[[r2_buckets]]
+binding = "IMAGES_BUCKET"
+bucket_name = "portfolio"
+
 [vars]
 FRONTEND_ORIGIN = "https://portfolio.federicoverdi.it"
 BACKOFFICE_ORIGIN = "https://backoffice.federicoverdi.it"
 CF_ZONE_ID = "90a9171402576affb201e41223313f36"
 FROM_EMAIL = "io@federicoverdi.it"
+IMAGES_PUBLIC_URL = "https://images.federicoverdi.it"
 
 [dev]
 port = 4000
