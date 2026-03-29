@@ -37,9 +37,9 @@ onMounted(() => {
   <nav class="fixed top-0 w-full z-50 bg-stone-950/80 backdrop-blur-md border-b border-stone-800/20">
     <div class="flex justify-between items-center max-w-7xl mx-auto px-8 h-20">
       <!-- Logo -->
-      <div class="text-xl font-bold tracking-tighter text-slate-100 font-headline">
+      <NuxtLink to="/" class="text-xl font-bold tracking-tighter text-slate-100 font-headline hover:opacity-80 transition-opacity">
         FV/DEV
-      </div>
+      </NuxtLink>
 
       <!-- Desktop Links -->
       <div class="hidden md:flex items-center space-x-12">
