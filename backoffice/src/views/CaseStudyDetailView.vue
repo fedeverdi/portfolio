@@ -3,6 +3,7 @@ import { ref, onMounted, computed } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { useCaseStudiesStore, type CaseStudy } from '@/stores/caseStudies'
 import ImageUpload from '@/components/ImageUpload.vue'
+import RichEditor from '@/components/RichEditor.vue'
 
 const route = useRoute()
 const router = useRouter()
@@ -159,12 +160,7 @@ async function save() {
             <div class="w-1.5 h-1.5 rounded-full bg-secondary" />
             <h3 class="font-semibold text-lg text-on-surface">Detailed Content</h3>
           </div>
-          <textarea
-            v-model="form.content"
-            rows="10"
-            placeholder="Full case study content, technical details, challenges, solutions, results..."
-            class="w-full bg-surface-container-low border border-surface-variant rounded-xl py-3 px-4 text-sm focus:ring-1 focus:ring-primary/20 focus:border-primary transition-all resize-none font-mono"
-          />
+          <RichEditor v-model="form.content" />
         </section>
       </div>
 
