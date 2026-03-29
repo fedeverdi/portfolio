@@ -49,7 +49,7 @@ const categories: SkillCategory[] = [
     class="bg-surface-container-lowest py-24 px-8 border-t border-stone-900"
   >
     <div class="max-w-7xl mx-auto">
-      <div class="grid grid-cols-12 gap-12">
+      <div class="grid grid-cols-12 gap-y-12 lg:gap-12">
         <!-- Intro text -->
         <div class="col-span-12 lg:col-span-4">
           <h2 class="text-3xl font-bold tracking-tight mb-6 font-headline">
