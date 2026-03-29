@@ -4,11 +4,28 @@ import { useRouter } from 'vue-router'
 
 const API_BASE = import.meta.env.VITE_API_BASE ?? ''
 
+function isTokenExpired(token: string): boolean {
+  try {
+    const payload = JSON.parse(atob(token.split('.')[1]))
+    return payload.exp * 1000 < Date.now()
+  } catch {
+    return true
+  }
+}
+
 export const useAuthStore = defineStore('auth', () => {
   const token = ref<string | null>(localStorage.getItem('bo_token'))
   const router = useRouter()
 
-  const isAuthenticated = computed(() => !!token.value)
+  const isAuthenticated = computed(() => {
+    if (!token.value) return false
+    if (isTokenExpired(token.value)) {
+      token.value = null
+      localStorage.removeItem('bo_token')
+      return false
+    }
+    return true
+  })
 
   async function login(email: string, password: string): Promise<void> {
     const res = await fetch(`${API_BASE}/api/auth/login`, {
@@ -40,5 +57,15 @@ export const useAuthStore = defineStore('auth', () => {
       : {}
   }
 
-  return { token, isAuthenticated, login, logout, authHeaders }
+  // Wrapper centralizzato: redirige al login su 401
+  async function apiFetch(input: RequestInfo, init?: RequestInit): Promise<Response> {
+    const res = await fetch(input, init)
+    if (res.status === 401) {
+      logout()
+      throw new Error('Session expired')
+    }
+    return res
+  }
+
+  return { token, isAuthenticated, login, logout, authHeaders, apiFetch }
 })

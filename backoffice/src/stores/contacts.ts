@@ -25,11 +25,16 @@ export const useContactsStore = defineStore('contacts', () => {
     return { ...auth.authHeaders() }
   }
 
+  function apiFetch(input: RequestInfo, init?: RequestInit) {
+    const auth = useAuthStore()
+    return auth.apiFetch(input, init)
+  }
+
   async function fetchAll() {
     loading.value = true
     error.value = null
     try {
-      const res = await fetch(`${API_BASE}/api/contacts`, { headers: getHeaders() })
+      const res = await apiFetch(`${API_BASE}/api/contacts`, { headers: getHeaders() })
       if (!res.ok) throw new Error('Failed to load contacts')
       items.value = await res.json() as ContactRequest[]
     } catch (e) {
@@ -40,7 +45,7 @@ export const useContactsStore = defineStore('contacts', () => {
   }
 
   async function markRead(id: string) {
-    await fetch(`${API_BASE}/api/contacts/${id}/read`, {
+    await apiFetch(`${API_BASE}/api/contacts/${id}/read`, {
       method: 'PATCH',
       headers: getHeaders()
     })
@@ -49,7 +54,7 @@ export const useContactsStore = defineStore('contacts', () => {
   }
 
   async function remove(id: string) {
-    await fetch(`${API_BASE}/api/contacts/${id}`, {
+    await apiFetch(`${API_BASE}/api/contacts/${id}`, {
       method: 'DELETE',
       headers: getHeaders()
     })

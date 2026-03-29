@@ -35,7 +35,7 @@ async function uploadFile(file: File) {
     const formData = new FormData()
     formData.append('file', file)
 
-    const res = await fetch(`${API_BASE}/api/images/upload`, {
+    const res = await auth.apiFetch(`${API_BASE}/api/images/upload`, {
       method: 'POST',
       headers: auth.authHeaders(),
       body: formData
@@ -75,7 +75,7 @@ async function removeImage() {
     const key = url.split('.net/')[1] ?? url.split('.com/')[1]
     if (key) {
       const encoded = btoa(key).replace(/\+/g, '-').replace(/\//g, '_').replace(/=/g, '')
-      await fetch(`${API_BASE}/api/images/${encoded}`, {
+      await auth.apiFetch(`${API_BASE}/api/images/${encoded}`, {
         method: 'DELETE',
         headers: auth.authHeaders()
       })

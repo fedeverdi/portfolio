@@ -31,11 +31,16 @@ export const useSettingsStore = defineStore('settings', () => {
     return { 'Content-Type': 'application/json', ...auth.authHeaders() }
   }
 
+  function apiFetch(input: RequestInfo, init?: RequestInit) {
+    const auth = useAuthStore()
+    return auth.apiFetch(input, init)
+  }
+
   async function fetch() {
     loading.value = true
     error.value = null
     try {
-      const res = await window.fetch(`${API_BASE}/api/settings`, { headers: getHeaders() })
+      const res = await apiFetch(`${API_BASE}/api/settings`, { headers: getHeaders() })
       if (!res.ok) throw new Error('Failed to load settings')
       data.value = await res.json() as Settings
     } catch (e) {
@@ -49,7 +54,7 @@ export const useSettingsStore = defineStore('settings', () => {
     saving.value = true
     error.value = null
     try {
-      const res = await window.fetch(`${API_BASE}/api/settings`, {
+      const res = await apiFetch(`${API_BASE}/api/settings`, {
         method: 'PUT',
         headers: getHeaders(),
         body: JSON.stringify(updates)

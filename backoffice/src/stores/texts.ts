@@ -22,11 +22,16 @@ export const useTextsStore = defineStore('texts', () => {
     return { 'Content-Type': 'application/json', ...auth.authHeaders() }
   }
 
+  function apiFetch(input: RequestInfo, init?: RequestInit) {
+    const auth = useAuthStore()
+    return auth.apiFetch(input, init)
+  }
+
   async function fetchAll() {
     loading.value = true
     error.value = null
     try {
-      const res = await fetch(`${API_BASE}/api/texts`, { headers: getHeaders() })
+      const res = await apiFetch(`${API_BASE}/api/texts`, { headers: getHeaders() })
       if (!res.ok) throw new Error('Failed to load texts')
       items.value = await res.json() as TextEntry[]
     } catch (e) {
@@ -40,13 +45,12 @@ export const useTextsStore = defineStore('texts', () => {
     saving.value = true
     error.value = null
     try {
-      const res = await fetch(`${API_BASE}/api/texts`, {
+      const res = await apiFetch(`${API_BASE}/api/texts`, {
         method: 'PUT',
         headers: getHeaders(),
         body: JSON.stringify(updates)
       })
       if (!res.ok) throw new Error('Failed to save texts')
-      // Update local state
       const now = new Date().toISOString()
       for (const u of updates) {
         const item = items.value.find(i => i.key === u.key)

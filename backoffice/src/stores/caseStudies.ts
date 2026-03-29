@@ -27,11 +27,16 @@ export const useCaseStudiesStore = defineStore('caseStudies', () => {
     return { 'Content-Type': 'application/json', ...auth.authHeaders() }
   }
 
+  function apiFetch(input: RequestInfo, init?: RequestInit) {
+    const auth = useAuthStore()
+    return auth.apiFetch(input, init)
+  }
+
   async function fetchAll() {
     loading.value = true
     error.value = null
     try {
-      const res = await fetch(`${API_BASE}/api/case-studies`, { headers: getHeaders() })
+      const res = await apiFetch(`${API_BASE}/api/case-studies`, { headers: getHeaders() })
       if (!res.ok) throw new Error('Failed to fetch')
       items.value = await res.json() as CaseStudy[]
     } catch (e) {
@@ -42,13 +47,13 @@ export const useCaseStudiesStore = defineStore('caseStudies', () => {
   }
 
   async function fetchOne(id: string): Promise<CaseStudy | null> {
-    const res = await fetch(`${API_BASE}/api/case-studies/${id}`, { headers: getHeaders() })
+    const res = await apiFetch(`${API_BASE}/api/case-studies/${id}`, { headers: getHeaders() })
     if (!res.ok) return null
     return res.json() as Promise<CaseStudy>
   }
 
   async function create(data: Omit<CaseStudy, 'id' | 'createdAt' | 'updatedAt'>): Promise<CaseStudy> {
-    const res = await fetch(`${API_BASE}/api/case-studies`, {
+    const res = await apiFetch(`${API_BASE}/api/case-studies`, {
       method: 'POST',
       headers: getHeaders(),
       body: JSON.stringify(data)
@@ -60,7 +65,7 @@ export const useCaseStudiesStore = defineStore('caseStudies', () => {
   }
 
   async function update(id: string, data: Partial<CaseStudy>): Promise<CaseStudy> {
-    const res = await fetch(`${API_BASE}/api/case-studies/${id}`, {
+    const res = await apiFetch(`${API_BASE}/api/case-studies/${id}`, {
       method: 'PUT',
       headers: getHeaders(),
       body: JSON.stringify(data)
@@ -73,7 +78,7 @@ export const useCaseStudiesStore = defineStore('caseStudies', () => {
   }
 
   async function remove(id: string): Promise<void> {
-    await fetch(`${API_BASE}/api/case-studies/${id}`, { method: 'DELETE', headers: getHeaders() })
+    await apiFetch(`${API_BASE}/api/case-studies/${id}`, { method: 'DELETE', headers: getHeaders() })
     items.value = items.value.filter(c => c.id !== id)
   }
 
