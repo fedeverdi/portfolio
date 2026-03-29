@@ -8,6 +8,25 @@ const route = useRoute()
 const router = useRouter()
 const auth = useAuthStore()
 
+const purging = ref(false)
+const purgeStatus = ref<'idle' | 'ok' | 'error'>('idle')
+let purgeStatusTimer: ReturnType<typeof setTimeout>
+
+async function purgeCache() {
+  purging.value = true
+  purgeStatus.value = 'idle'
+  try {
+    const res = await auth.apiFetch('/api/settings/purge', { method: 'POST' })
+    purgeStatus.value = res.ok ? 'ok' : 'error'
+  } catch {
+    purgeStatus.value = 'error'
+  } finally {
+    purging.value = false
+    clearTimeout(purgeStatusTimer)
+    purgeStatusTimer = setTimeout(() => { purgeStatus.value = 'idle' }, 3000)
+  }
+}
+
 const API_BASE = import.meta.env.VITE_API_BASE ?? ''
 
 interface SearchResults {
@@ -178,6 +197,26 @@ function logout() {
       </div>
       <div class="flex items-center gap-6">
         <div class="flex items-center gap-4">
+          <button
+            class="flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 rounded-lg transition-all"
+            :class="{
+              'text-on-surface-variant hover:text-primary hover:bg-surface-container-high': purgeStatus === 'idle',
+              'text-success bg-success/10': purgeStatus === 'ok',
+              'text-error bg-error/10': purgeStatus === 'error',
+              'opacity-50 cursor-not-allowed': purging
+            }"
+            :disabled="purging"
+            :title="purgeStatus === 'ok' ? 'Cache purged!' : purgeStatus === 'error' ? 'Purge failed' : 'Purge cache'"
+            @click="purgeCache"
+          >
+            <span
+              class="material-symbols-outlined text-sm"
+              :class="{ 'animate-spin': purging }"
+            >
+              {{ purging ? 'progress_activity' : purgeStatus === 'ok' ? 'check_circle' : purgeStatus === 'error' ? 'error' : 'delete_sweep' }}
+            </span>
+            {{ purging ? 'Purging...' : purgeStatus === 'ok' ? 'Purged!' : purgeStatus === 'error' ? 'Failed' : 'Purge Cache' }}
+          </button>
           <button class="text-on-surface-variant hover:text-primary transition-colors p-2 hover:bg-surface-container-high rounded-full">
             <span class="material-symbols-outlined">notifications</span>
           </button>

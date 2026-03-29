@@ -49,3 +49,25 @@ settingsRouter.put('/', async (c) => {
 
   return c.json({ ok: true })
 })
+
+// POST /api/settings/purge — purge Cloudflare cache on demand
+settingsRouter.post('/purge', async (c) => {
+  if (!c.env.CF_ZONE_ID || !c.env.CF_PURGE_TOKEN) {
+    return c.json({ error: 'Cache purge not configured' }, 503)
+  }
+
+  const res = await fetch(
+    `https://api.cloudflare.com/client/v4/zones/${c.env.CF_ZONE_ID}/purge_cache`,
+    {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${c.env.CF_PURGE_TOKEN}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ purge_everything: true })
+    }
+  )
+
+  if (!res.ok) return c.json({ error: 'Cloudflare purge failed' }, 502)
+  return c.json({ ok: true })
+})
